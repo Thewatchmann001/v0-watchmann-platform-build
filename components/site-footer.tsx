@@ -12,6 +12,12 @@ export function SiteFooter() {
               <span className="text-xl font-bold text-white">Watchmann</span>
             </div>
             <p className="text-sm text-slate-400">Enterprise-grade platform for agencies and businesses</p>
+            <p className="text-xs text-slate-500 pt-2">
+              Founded by{" "}
+              <Link href="/about" className="text-slate-400 hover:text-blue-400 transition-colors">
+                Joseph Edward Musa Amah
+              </Link>
+            </p>
           </div>
 
           <div>

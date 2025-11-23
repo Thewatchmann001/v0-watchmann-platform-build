@@ -31,6 +31,9 @@ export function SiteHeader() {
             <Link href="/blog" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
               Blog
             </Link>
+            <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+              About
+            </Link>
           </div>
         </div>
 
@@ -62,6 +65,9 @@ export function SiteHeader() {
             </Link>
             <Link href="/blog" className="text-sm font-medium text-slate-300 hover:text-white py-2">
               Blog
+            </Link>
+            <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-white py-2">
+              About
             </Link>
             <div className="flex flex-col gap-2 pt-4 border-t border-slate-800">
               <Button
