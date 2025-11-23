@@ -73,7 +73,7 @@ export default function AboutPage() {
                   <p className="text-slate-300 leading-relaxed mb-6">
                     Joseph Edward Musa Amah, a Mechanical Engineer, software and AI enthusiast, founded Watchmann.com a team of elite developers, data scientist, software, AI, Mechanical and design engineers to deliver
                     cutting-edge tech, AI, and design solutions globally. With a passion for innovation and a vision for
-                    democratizing technology, he leads Watchmann in building transformative solutions for businesses
+                    democratizing technology, he leads Watchmann in building transformative solutions for businesses, agencies and individuals
                     worldwide.
                   </p>
 
