@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -16,7 +15,6 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
-  const [role, setRole] = useState("client")
   const [repeatPassword, setRepeatPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -42,7 +40,6 @@ export default function SignUpPage() {
           emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/dashboard`,
           data: {
             full_name: fullName,
-            role: role,
           },
         },
       })
@@ -97,20 +94,6 @@ export default function SignUpPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     className="border-slate-700 bg-slate-800/50 text-white placeholder:text-slate-500"
                   />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="role" className="text-slate-200">
-                    Account Type
-                  </Label>
-                  <Select value={role} onValueChange={setRole}>
-                    <SelectTrigger className="border-slate-700 bg-slate-800/50 text-white">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="border-slate-700 bg-slate-800 text-white">
-                      <SelectItem value="client">Client</SelectItem>
-                      <SelectItem value="agency">Agency</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="password" className="text-slate-200">

@@ -14,10 +14,9 @@ export default async function AdminUsersPage() {
   const getRoleBadge = (role: string) => {
     const colors: Record<string, string> = {
       admin: "bg-red-500/10 text-red-400 border-red-500/20",
-      agency: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-      client: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+      user: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
     }
-    return colors[role] || colors.client
+    return colors[role] || colors.user
   }
 
   return (

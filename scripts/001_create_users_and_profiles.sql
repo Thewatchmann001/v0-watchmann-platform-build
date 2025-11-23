@@ -4,7 +4,8 @@ create table if not exists public.profiles (
   email text not null,
   full_name text,
   avatar_url text,
-  role text check (role in ('admin', 'agency', 'client')) default 'client',
+  -- Updated role check to include 'user' and default to 'user' instead of 'client'
+  role text check (role in ('admin', 'user')) default 'user',
   organization_id uuid references public.organizations(id) on delete set null,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
@@ -66,23 +67,32 @@ create policy "organizations_update_members"
     select 1 from public.profiles 
     where profiles.organization_id = organizations.id 
     and profiles.id = auth.uid() 
-    and profiles.role in ('admin', 'agency')
+    and profiles.role = 'admin'
   ));
 
--- Auto-create profile on user signup
+-- Auto-create profile with automatic admin assignment for specific emails
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
 security definer
 set search_path = public
 as $$
+declare
+  user_role text;
 begin
+  -- Auto-assign admin role for specific email addresses
+  if new.email in ('josephemsamah@gmail.com', 'info.watchmann@gmail.com') then
+    user_role := 'admin';
+  else
+    user_role := 'user';
+  end if;
+
   insert into public.profiles (id, email, full_name, role)
   values (
     new.id,
     new.email,
     coalesce(new.raw_user_meta_data ->> 'full_name', null),
-    coalesce(new.raw_user_meta_data ->> 'role', 'client')
+    user_role
   )
   on conflict (id) do nothing;
 
