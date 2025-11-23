@@ -13,11 +13,6 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-block">
-            <span className="text-sm font-semibold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
-              Enterprise-Grade Platform
-            </span>
-          </div>
           <h1 className="text-5xl md:text-7xl font-bold text-white text-balance">
             Transform Your Agency with{" "}
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -51,15 +46,15 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">500+</div>
+            <div className="text-4xl font-bold text-white mb-2">50+</div>
             <div className="text-slate-400">Active Agencies</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">50k+</div>
+            <div className="text-4xl font-bold text-white mb-2">1,000+</div>
             <div className="text-slate-400">Projects Managed</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">100+</div>
+            <div className="text-4xl font-bold text-white mb-2">25+</div>
             <div className="text-slate-400">AI Models</div>
           </div>
           <div className="text-center">

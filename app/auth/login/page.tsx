@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -43,6 +44,9 @@ export default function LoginPage() {
     <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-6">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
+          <div className="flex justify-center mb-4">
+            <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={64} height={64} className="h-16 w-16" />
+          </div>
           <h1 className="text-4xl font-bold text-white mb-2">Watchmann</h1>
           <p className="text-slate-400">Enterprise-grade platform</p>
         </div>

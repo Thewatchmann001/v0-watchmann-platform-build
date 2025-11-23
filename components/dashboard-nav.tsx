@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { LayoutDashboard, Briefcase, BookOpen, ShoppingBag, User, LogOut } from "lucide-react"
+import Image from "next/image"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 
@@ -30,7 +31,7 @@ export function DashboardNav() {
     <div className="flex h-screen w-64 flex-col border-r border-slate-800 bg-slate-900">
       <div className="p-6 border-b border-slate-800">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500" />
+          <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="h-8 w-8" />
           <span className="text-xl font-bold text-white">Watchmann</span>
         </Link>
       </div>
