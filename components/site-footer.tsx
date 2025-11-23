@@ -1,0 +1,91 @@
+import Link from "next/link"
+
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-slate-800 bg-slate-950">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500" />
+              <span className="text-xl font-bold text-white">Watchmann</span>
+            </div>
+            <p className="text-sm text-slate-400">Enterprise-grade platform for agencies and businesses</p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-4">Platform</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/ai-labs" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  AI Labs
+                </Link>
+              </li>
+              <li>
+                <Link href="/marketplace" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Marketplace
+                </Link>
+              </li>
+              <li>
+                <Link href="/academy" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Academy
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/docs" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Documentation
+                </Link>
+              </li>
+              <li>
+                <Link href="/support" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Support
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Pricing
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/about" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-400">
+          <p>&copy; {new Date().getFullYear()} Watchmann. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  )
+}
