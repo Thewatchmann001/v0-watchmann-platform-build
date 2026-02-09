@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 export default function LoginPage() {
@@ -18,6 +18,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -31,7 +32,8 @@ export default function LoginPage() {
         password,
       })
       if (error) throw error
-      router.push("/dashboard")
+      const next = searchParams.get("next") || "/welcome"
+      router.push(next)
       router.refresh()
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred")

@@ -2,18 +2,53 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Menu, X, ArrowLeft } from "lucide-react"
 import Image from "next/image"
+import { createClient } from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isAuthed, setIsAuthed] = useState(false)
+  const router = useRouter()
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      setIsAuthed(!!data.user)
+    })
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsAuthed(!!session)
+    })
+    return () => {
+      data.subscription.unsubscribe()
+    }
+  }, [])
+
+  function handleBack() {
+    if (typeof window !== "undefined") {
+      if (window.history.length > 1) {
+        router.back()
+      } else {
+        router.push(isAuthed ? "/welcome" : "/")
+        router.refresh()
+      }
+    } else {
+      router.push("/")
+      router.refresh()
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/60">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center space-x-2">
+          <Button variant="ghost" className="text-slate-300 hover:text-white hover:bg-slate-800" onClick={handleBack}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back
+          </Button>
+          <Link href={isAuthed ? "/welcome" : "/"} className="flex items-center space-x-2">
             <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="h-8 w-8" />
             <span className="text-xl font-bold text-white">Watchmann</span>
           </Link>
@@ -34,6 +69,11 @@ export function SiteHeader() {
             <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
               About
             </Link>
+            {isAuthed && (
+              <Link href="/dashboard" className="text-sm font-medium text-white transition-colors">
+                Dashboard
+              </Link>
+            )}
           </div>
         </div>
 
@@ -69,6 +109,11 @@ export function SiteHeader() {
             <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-white py-2">
               About
             </Link>
+            {isAuthed && (
+              <Link href="/dashboard" className="text-sm font-medium text-white py-2">
+                Dashboard
+              </Link>
+            )}
             <div className="flex flex-col gap-2 pt-4 border-t border-slate-800">
               <Button
                 variant="outline"

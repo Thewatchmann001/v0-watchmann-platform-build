@@ -4,8 +4,7 @@ create table if not exists public.profiles (
   email text not null,
   full_name text,
   avatar_url text,
-  -- Updated role check to include 'user' and default to 'user' instead of 'client'
-  role text check (role in ('admin', 'user')) default 'user',
+  role text check (role in ('admin', 'user', 'agency')) default 'user',
   organization_id uuid references public.organizations(id) on delete set null,
   created_at timestamptz default now(),
   updated_at timestamptz default now()

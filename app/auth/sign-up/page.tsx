@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 export default function SignUpPage() {
@@ -20,6 +20,7 @@ export default function SignUpPage() {
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,18 +35,24 @@ export default function SignUpPage() {
     }
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/dashboard`,
+          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/welcome`,
           data: {
             full_name: fullName,
           },
         },
       })
       if (error) throw error
-      router.push("/auth/sign-up-success")
+      if (data?.session) {
+        const next = searchParams.get("next") || "/welcome"
+        router.push(next)
+        router.refresh()
+      } else {
+        router.push("/auth/sign-up-success")
+      }
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred")
     } finally {

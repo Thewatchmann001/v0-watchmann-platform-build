@@ -6,10 +6,39 @@ import { Users, Mail, Calendar } from "lucide-react"
 export default async function AdminUsersPage() {
   const supabase = await createClient()
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  const isSuperAdmin = user?.email === "watchmann2025@gmail.com"
+
   const { data: users } = await supabase
     .from("profiles")
     .select("*, organizations(name)")
     .order("created_at", { ascending: false })
+
+  async function makeAdmin(formData: FormData) {
+    "use server"
+    const supabase = await createClient()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    if (user?.email !== "watchmann2025@gmail.com") return
+    const targetId = String(formData.get("user_id") || "")
+    if (!targetId) return
+    await supabase.from("profiles").update({ role: "admin" }).eq("id", targetId)
+  }
+
+  async function removeAdmin(formData: FormData) {
+    "use server"
+    const supabase = await createClient()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    if (user?.email !== "watchmann2025@gmail.com") return
+    const targetId = String(formData.get("user_id") || "")
+    if (!targetId) return
+    await supabase.from("profiles").update({ role: "user" }).eq("id", targetId)
+  }
 
   const getRoleBadge = (role: string) => {
     const colors: Record<string, string> = {
@@ -69,6 +98,21 @@ export default async function AdminUsersPage() {
                   <Calendar className="h-3 w-3 mr-1" />
                   Joined {new Date(user.created_at).toLocaleDateString()}
                 </div>
+                {isSuperAdmin && (
+                  <div className="pt-2">
+                    {user.role !== "admin" ? (
+                      <form action={makeAdmin}>
+                        <input type="hidden" name="user_id" value={user.id} />
+                        <button className="text-xs text-blue-400 hover:text-blue-300 underline">Make Admin</button>
+                      </form>
+                    ) : (
+                      <form action={removeAdmin}>
+                        <input type="hidden" name="user_id" value={user.id} />
+                        <button className="text-xs text-slate-400 hover:text-slate-300 underline">Remove Admin</button>
+                      </form>
+                    )}
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}

@@ -17,6 +17,7 @@ import {
 import Image from "next/image"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
+import { ArrowLeft } from "lucide-react"
 
 export function AdminNav() {
   const pathname = usePathname()
@@ -27,6 +28,15 @@ export function AdminNav() {
     await supabase.auth.signOut()
     router.push("/")
     router.refresh()
+  }
+
+  const handleBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back()
+    } else {
+      router.push("/welcome")
+      router.refresh()
+    }
   }
 
   const navItems = [
@@ -43,13 +53,23 @@ export function AdminNav() {
   return (
     <div className="flex h-screen w-64 flex-col border-r border-slate-800 bg-slate-900">
       <div className="p-6 border-b border-slate-800">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/welcome" className="flex items-center space-x-2">
           <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="h-8 w-8" />
           <div>
             <span className="text-xl font-bold text-white block">Watchmann</span>
             <span className="text-xs text-slate-400">Admin Console</span>
           </div>
         </Link>
+        <div className="mt-4">
+          <Button
+            variant="ghost"
+            className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800"
+            onClick={handleBack}
+          >
+            <ArrowLeft className="mr-3 h-5 w-5" />
+            Back
+          </Button>
+        </div>
       </div>
 
       <nav className="flex-1 space-y-1 p-4">
