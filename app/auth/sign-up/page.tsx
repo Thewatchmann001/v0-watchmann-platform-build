@@ -10,9 +10,9 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 
-export default function SignUpPage() {
+function SignUpForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
@@ -150,5 +150,13 @@ export default function SignUpPage() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignUpForm />
+    </Suspense>
   )
 }
