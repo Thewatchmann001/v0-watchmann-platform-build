@@ -54,7 +54,7 @@ export function AdminNav() {
     <div className="flex h-screen w-64 flex-col border-r border-slate-800 bg-slate-900">
       <div className="p-6 border-b border-slate-800">
         <Link href="/welcome" className="flex items-center space-x-2">
-          <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="h-8 w-8" />
+          <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
           <div>
             <span className="text-xl font-bold text-white block">Watchmann</span>
             <span className="text-xs text-slate-400">Admin Console</span>

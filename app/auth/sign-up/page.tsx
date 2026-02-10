@@ -65,7 +65,7 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <div className="flex justify-center mb-4">
-            <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={64} height={64} className="h-16 w-16" />
+            <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={64} height={64} className="w-16 h-auto object-contain" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">Watchmann</h1>
           <p className="text-slate-400">Enterprise-grade platform</p>
