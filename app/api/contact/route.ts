@@ -53,17 +53,20 @@ export async function POST(req: NextRequest) {
     const apiKey = process.env.RESEND_API_KEY
     if (apiKey) {
       try {
-        const { Resend } = await import("resend")
-        const resend = new Resend(apiKey)
-        await resend.emails.send({
-          from: "onboarding@resend.dev",
-          to: "watchmann2025@gmail.com",
-          subject: "New Contact Request",
-          text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "-"}\nOrganization: ${organization || "-"}\n\n${description}`,
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            from: "onboarding@resend.dev",
+            to: "watchmann2025@gmail.com",
+            subject: "New Contact Request",
+            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "-"}\nOrganization: ${organization || "-"}\n\n${description}`,
+          }),
         })
-      } catch (e) {
-        // Ignore email failures; logging intentionally omitted
-      }
+      } catch {}
     }
 
     return NextResponse.json({ ok: true, stored })
