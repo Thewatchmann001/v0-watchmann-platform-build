@@ -11,6 +11,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Suspense, useState } from "react"
+import { FaGoogle, FaFacebook } from "react-icons/fa"
+import type { Provider } from "@supabase/supabase-js"
 
 function LoginForm() {
   const [email, setEmail] = useState("")
@@ -38,6 +40,25 @@ function LoginForm() {
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred")
     } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleOAuthLogin = async (provider: Provider) => {
+    const supabase = createClient()
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback?next=${searchParams.get("next") || "/welcome"}`,
+        },
+      })
+      if (error) throw error
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : "An error occurred")
       setIsLoading(false)
     }
   }
@@ -93,6 +114,38 @@ function LoginForm() {
                 <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading}>
                   {isLoading ? "Logging in..." : "Login"}
                 </Button>
+
+                <div className="relative my-4">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t border-slate-800"></span>
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-[#0f172a] px-2 text-slate-400">Or continue with</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="border-slate-700 bg-slate-800/50 text-white hover:bg-slate-800"
+                    onClick={() => handleOAuthLogin("google")}
+                    disabled={isLoading}
+                  >
+                    <FaGoogle className="mr-2 h-4 w-4" />
+                    Google
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="border-slate-700 bg-slate-800/50 text-white hover:bg-slate-800"
+                    onClick={() => handleOAuthLogin("facebook")}
+                    disabled={isLoading}
+                  >
+                    <FaFacebook className="mr-2 h-4 w-4" />
+                    Facebook
+                  </Button>
+                </div>
               </div>
               <div className="mt-4 text-center text-sm text-slate-400">
                 Don&apos;t have an account?{" "}
