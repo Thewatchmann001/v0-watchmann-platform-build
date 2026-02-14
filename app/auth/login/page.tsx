@@ -2,116 +2,88 @@
 
 import type React from "react"
 
-import { createClient } from "@/lib/supabase/client"
+import { useState, Suspense } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Link from "next/link"
-import Image from "next/image"
-import { useRouter, useSearchParams } from "next/navigation"
-import { Suspense, useState } from "react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ShieldCheck } from "lucide-react"
+import { OAuthButtons } from "@/components/auth/oauth-buttons"
 
-function LoginForm() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState<string | null>(null)
+export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
-  const searchParams = useSearchParams()
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const supabase = createClient()
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
     setIsLoading(true)
-    setError(null)
 
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
-      if (error) throw error
-      const next = searchParams.get("next") || "/welcome"
-      router.push(next)
-      router.refresh()
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred")
-    } finally {
+    setTimeout(() => {
       setIsLoading(false)
-    }
+    }, 3000)
   }
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-6">
-      <div className="w-full max-w-md">
-        <div className="mb-8 text-center">
-          <div className="flex justify-center mb-4">
-            <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={64} height={64} className="w-16 h-auto object-contain" />
+    <div className="flex min-h-screen items-center justify-center bg-slate-950 p-4">
+      <Card className="w-full max-w-md border-slate-800 bg-slate-900 text-slate-100">
+        <CardHeader className="space-y-1 flex flex-col items-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 mb-2">
+            <ShieldCheck className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-2">Watchmann</h1>
-          <p className="text-slate-400">Enterprise-grade platform</p>
-        </div>
-        <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">
-          <CardHeader>
-            <CardTitle className="text-2xl text-white">Login</CardTitle>
-            <CardDescription className="text-slate-400">Enter your credentials to access your account</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin}>
-              <div className="flex flex-col gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="email" className="text-slate-200">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="m@example.com"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="border-slate-700 bg-slate-800/50 text-white placeholder:text-slate-500"
-                  />
-                </div>
-                <div className="grid gap-2">
+          <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
+          <CardDescription className="text-slate-400 text-center">
+            Enter your email and password to access your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={onSubmit}>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email" className="text-slate-200">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  required
+                  className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-slate-500"
+                />
+              </div>
+              <div className="grid gap-2">
+                <div className="flex items-center justify-between">
                   <Label htmlFor="password" className="text-slate-200">
                     Password
                   </Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="border-slate-700 bg-slate-800/50 text-white"
-                  />
+                  <Link href="#" className="text-sm font-medium text-blue-500 hover:text-blue-400">
+                    Forgot password?
+                  </Link>
                 </div>
-                {error && (
-                  <p className="text-sm text-red-400 bg-red-500/10 p-3 rounded-lg border border-red-500/20">{error}</p>
-                )}
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading}>
-                  {isLoading ? "Logging in..." : "Login"}
-                </Button>
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  className="bg-slate-800 border-slate-700 text-slate-100"
+                />
               </div>
-              <div className="mt-4 text-center text-sm text-slate-400">
-                Don&apos;t have an account?{" "}
-                <Link href="/auth/sign-up" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
-                  Sign up
-                </Link>
-              </div>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
+              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={isLoading}>
+                {isLoading ? "Logging in..." : "Login"}
+              </Button>
+            </div>
+          </form>
+          <Suspense fallback={<div className="h-20 animate-pulse bg-slate-800/50 rounded-lg mt-4" />}>
+            <OAuthButtons />
+          </Suspense>
+        </CardContent>
+        <CardFooter className="flex flex-col space-y-4">
+          <div className="text-center text-sm text-slate-400">
+            Don&apos;t have an account?{" "}
+            <Link href="/auth/sign-up" className="font-medium text-blue-500 hover:text-blue-400">
+              Sign up
+            </Link>
+          </div>
+        </CardFooter>
+      </Card>
     </div>
-  )
-}
-
-export default function LoginPage() {
-  return (
-    <Suspense fallback={null}>
-      <LoginForm />
-    </Suspense>
   )
 }
