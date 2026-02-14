@@ -5,51 +5,32 @@ export function createClient() {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseAnonKey) {
+    const mockResponse = { data: null, error: null }
+    const chain = {
+      eq: () => chain,
+      select: () => chain,
+      insert: () => chain,
+      update: () => chain,
+      upsert: () => chain,
+      delete: () => chain,
+      order: () => chain,
+      limit: () => chain,
+      single: async () => mockResponse,
+      maybeSingle: async () => mockResponse,
+      then: (onfulfilled?: any) => Promise.resolve(mockResponse).then(onfulfilled),
+    }
+
     return {
       auth: {
-        async getUser() {
-          return { data: { user: null }, error: null }
-        },
-        async signInWithPassword() {
-          return { data: null, error: { message: "Supabase is not configured" } }
-        },
-        async signUp() {
-          return { data: null, error: { message: "Supabase is not configured" } }
-        },
-        async signInWithOAuth() {
-          return { data: null, error: { message: "Supabase is not configured" } }
-        },
-        async signOut() {
-          return { error: null }
-        },
-        onAuthStateChange() {
-          return { data: { subscription: { unsubscribe() {} } } }
-        },
+        getUser: async () => ({ data: { user: null }, error: null }),
+        getSession: async () => ({ data: { session: null }, error: null }),
+        signInWithPassword: async () => ({ data: { user: null, session: null }, error: null }),
+        signUp: async () => ({ data: { user: null, session: null }, error: null }),
+        signInWithOAuth: async () => mockResponse,
+        signOut: async () => ({ error: null }),
+        onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
       },
-      from() {
-        return {
-          select() {
-            return {
-              eq() {
-                return {
-                  order() {
-                    return { data: [], error: null }
-                  },
-                  single() {
-                    return { data: null, error: null }
-                  },
-                }
-              },
-              order() {
-                return { data: [], error: null }
-              },
-              single() {
-                return { data: null, error: null }
-              },
-            }
-          },
-        }
-      },
+      from: () => chain,
     } as any
   }
 
