@@ -16,6 +16,9 @@ export function createClient() {
         async signUp() {
           return { data: null, error: { message: "Supabase is not configured" } }
         },
+        async signInWithOAuth() {
+          return { data: null, error: { message: "Supabase is not configured" } }
+        },
         async signOut() {
           return { error: null }
         },

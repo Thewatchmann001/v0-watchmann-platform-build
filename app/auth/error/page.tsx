@@ -1,35 +1,32 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+"use client"
+
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { AlertCircle } from "lucide-react"
 
-export default async function ErrorPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ error: string }>
-}) {
-  const params = await searchParams
-
+export default function AuthErrorPage() {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-6">
-      <div className="w-full max-w-md">
-        <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">
-          <CardHeader>
-            <CardTitle className="text-2xl text-white">Authentication Error</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {params?.error ? (
-              <p className="text-sm text-red-400 bg-red-500/10 p-3 rounded-lg border border-red-500/20">
-                Error: {params.error}
-              </p>
-            ) : (
-              <p className="text-sm text-slate-300">An unspecified error occurred during authentication.</p>
-            )}
-            <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-              <Link href="/auth/login">Back to Login</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+    <div className="flex min-h-screen items-center justify-center bg-slate-950 p-4">
+      <Card className="w-full max-w-md border-slate-800 bg-slate-900 text-slate-100">
+        <CardHeader className="space-y-1 flex flex-col items-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600/10 mb-2">
+            <AlertCircle className="h-8 w-8 text-red-600" />
+          </div>
+          <CardTitle className="text-2xl font-bold text-center">Authentication Error</CardTitle>
+          <CardDescription className="text-slate-400 text-center">
+            There was a problem signing you in.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-center text-slate-300">
+          <p>Please try again or contact support if the problem persists.</p>
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Link href="/auth/login">Back to Login</Link>
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
