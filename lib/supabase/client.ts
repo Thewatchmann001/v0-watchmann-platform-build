@@ -6,6 +6,8 @@ export function createClient() {
 
   if (!supabaseUrl || !supabaseAnonKey) {
     const mockResponse = { data: null, error: null }
+    const errorResponse = { data: null, error: { message: "Supabase is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment variables." } }
+
     const chain = {
       eq: () => chain,
       select: () => chain,
@@ -24,9 +26,9 @@ export function createClient() {
       auth: {
         getUser: async () => ({ data: { user: null }, error: null }),
         getSession: async () => ({ data: { session: null }, error: null }),
-        signInWithPassword: async () => ({ data: { user: null, session: null }, error: null }),
-        signUp: async () => ({ data: { user: null, session: null }, error: null }),
-        signInWithOAuth: async () => mockResponse,
+        signInWithPassword: async () => errorResponse,
+        signUp: async () => errorResponse,
+        signInWithOAuth: async () => errorResponse,
         signOut: async () => ({ error: null }),
         onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
       },
