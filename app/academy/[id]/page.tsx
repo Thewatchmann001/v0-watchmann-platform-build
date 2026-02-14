@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     .eq("id", params.id)
     .single()
   if (!course) {
-    return { title: "Academy – Watchmann", description: "Learn AI and modern engineering." }
+    return { title: "Academy – Watchmann Technologies Ltd", description: "Learn AI and modern engineering." }
   }
   return {
     title: `${course.title} – Academy`,

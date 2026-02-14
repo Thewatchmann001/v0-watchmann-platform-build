@@ -5,8 +5,17 @@ export function createClient() {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseAnonKey) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("Supabase credentials missing. Using mock client.")
+    }
+
     const mockResponse = { data: null, error: null }
-    const errorResponse = { data: null, error: { message: "Supabase is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment variables." } }
+    const errorResponse = {
+      data: null,
+      error: {
+        message: "Supabase is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment variables."
+      }
+    }
 
     const chain = {
       eq: () => chain,
@@ -33,7 +42,7 @@ export function createClient() {
         onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
       },
       from: () => chain,
-    } as any
+    } as unknown as ReturnType<typeof createBrowserClient>
   }
 
   return createBrowserClient(supabaseUrl, supabaseAnonKey)

@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
-              <span className="text-xl font-bold text-white">Watchmann</span>
+              <span className="text-xl font-bold text-white">Watchmann Technologies Ltd</span>
             </div>
             <p className="text-sm text-slate-400">Enterprise-grade platform for agencies and businesses</p>
             <p className="text-xs text-slate-500 pt-2">
@@ -90,7 +90,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-400">
-          <p>&copy; {new Date().getFullYear()} Watchmann. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Watchmann Technologies Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

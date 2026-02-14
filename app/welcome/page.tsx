@@ -7,7 +7,7 @@ import { ArrowRight, Zap, Shield, Users, TrendingUp, Cpu, ShoppingCart, Graduati
 import { FaWhatsapp } from "react-icons/fa"
 import { TrackLink } from "@/components/track-link"
 export const metadata = {
-  title: "Welcome – Watchmann",
+  title: "Welcome – Watchmann Technologies Ltd",
   description: "Contact our team or explore services across AI, software, data, and cloud.",
 }
 
@@ -192,7 +192,7 @@ export default function WelcomePage() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Start Your Project?</h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Tell us about your goals. Our team will propose a tailored solution and timeline.
+              Tell us about your goals at Watchmann Technologies Ltd. Our team will propose a tailored solution and timeline.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700">

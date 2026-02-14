@@ -8,19 +8,57 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ShieldCheck } from "lucide-react"
+import { ShieldCheck, AlertCircle } from "lucide-react"
 import { OAuthButtons } from "@/components/auth/oauth-buttons"
+import { createClient } from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
 
 export default function SignUpPage() {
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
+  const supabase = createClient()
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsLoading(true)
+    setError(null)
 
-    setTimeout(() => {
+    const formData = new FormData(event.currentTarget)
+    const email = formData.get("email") as string
+    const password = formData.get("password") as string
+    const confirmPassword = formData.get("confirm-password") as string
+    const fullName = formData.get("full-name") as string
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match")
       setIsLoading(false)
-    }, 3000)
+      return
+    }
+
+    try {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
+      })
+
+      if (error) {
+        setError(error.message)
+        setIsLoading(false)
+        return
+      }
+
+      router.push("/auth/sign-up-success")
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.")
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -32,10 +70,16 @@ export default function SignUpPage() {
           </div>
           <CardTitle className="text-2xl font-bold text-center">Create an account</CardTitle>
           <CardDescription className="text-slate-400 text-center">
-            Get started with Watchmann platform
+            Get started with Watchmann Technologies Ltd platform
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {error && (
+            <div className="mb-4 flex items-center gap-2 rounded-md bg-red-500/10 p-3 text-sm text-red-500 border border-red-500/20">
+              <AlertCircle className="h-4 w-4" />
+              <p>{error}</p>
+            </div>
+          )}
           <form onSubmit={onSubmit}>
             <div className="grid gap-4">
               <div className="grid gap-2">
@@ -44,6 +88,7 @@ export default function SignUpPage() {
                 </Label>
                 <Input
                   id="full-name"
+                  name="full-name"
                   placeholder="John Doe"
                   required
                   className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-slate-500"
@@ -55,6 +100,7 @@ export default function SignUpPage() {
                 </Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="m@example.com"
                   required
@@ -67,6 +113,7 @@ export default function SignUpPage() {
                 </Label>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   required
                   className="bg-slate-800 border-slate-700 text-slate-100"
@@ -78,6 +125,7 @@ export default function SignUpPage() {
                 </Label>
                 <Input
                   id="confirm-password"
+                  name="confirm-password"
                   type="password"
                   required
                   className="bg-slate-800 border-slate-700 text-slate-100"

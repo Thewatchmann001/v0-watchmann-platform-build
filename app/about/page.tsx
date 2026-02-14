@@ -3,8 +3,8 @@ import Link from "next/link"
 import { Linkedin, Mail } from "lucide-react"
 
 export const metadata = {
-  title: "About - Watchmann",
-  description: "Learn about Watchmann and our mission to deliver cutting-edge tech, AI, and design solutions globally.",
+  title: "About - Watchmann Technologies Ltd",
+  description: "Learn about Watchmann Technologies Ltd and our mission to deliver cutting-edge tech, AI, and design solutions globally.",
 }
 
 export default function AboutPage() {
@@ -13,7 +13,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">About Watchmann</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">About Watchmann Technologies Ltd</h1>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto text-balance">
             Building the future of technology with cutting-edge AI, innovative design, and comprehensive solutions for
             agencies and businesses worldwide.
@@ -27,7 +27,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
             <p className="text-lg text-slate-400 leading-relaxed mb-4">
-              At Watchmann, we are committed to empowering agencies and businesses with innovative technology solutions
+              At Watchmann Technologies Ltd, we are committed to empowering agencies and businesses with innovative technology solutions
               that drive growth and efficiency. Our platform combines artificial intelligence, comprehensive learning
               resources, and a robust marketplace to provide everything you need to succeed in the digital age.
             </p>
@@ -71,9 +71,9 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold text-white mb-2">Joseph Edward Musa Amah</h3>
                   <p className="text-blue-400 font-medium mb-4">Founder & CEO</p>
                   <p className="text-slate-300 leading-relaxed mb-6">
-                    Joseph Edward Musa Amah, a Mechanical Engineer, software and AI enthusiast, founded Watchmann.com a team of elite developers, data scientist, software, AI, Mechanical and design engineers to deliver
+                    Joseph Edward Musa Amah, a Mechanical Engineer, software and AI enthusiast, founded Watchmann Technologies Ltd, a team of elite developers, data scientist, software, AI, Mechanical and design engineers to deliver
                     cutting-edge tech, AI, and design solutions globally. With a passion for innovation and a vision for
-                    democratizing technology, he leads Watchmann in building transformative solutions for businesses, agencies and individuals
+                    democratizing technology, he leads Watchmann Technologies Ltd in building transformative solutions for businesses, agencies and individuals
                     worldwide.
                   </p>
 

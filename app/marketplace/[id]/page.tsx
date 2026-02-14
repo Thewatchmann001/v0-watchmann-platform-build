@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     .eq("id", params.id)
     .single()
   if (!product) {
-    return { title: "Marketplace – Watchmann", description: "Discover AI tools and services." }
+    return { title: "Marketplace – Watchmann Technologies Ltd", description: "Discover AI tools and services." }
   }
   return {
     title: `${product.name} – Marketplace`,

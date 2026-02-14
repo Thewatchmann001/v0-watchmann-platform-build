@@ -192,7 +192,7 @@ export default function HomePage() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Transform Your Agency?</h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Join hundreds of agencies already using Watchmann to scale their operations and deliver exceptional
+              Join hundreds of agencies already using Watchmann Technologies Ltd to scale their operations and deliver exceptional
               results
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

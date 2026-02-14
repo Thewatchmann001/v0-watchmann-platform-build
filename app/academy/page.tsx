@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server"
 import Link from "next/link"
 import { GraduationCap, Clock, ArrowRight } from "lucide-react"
 export const metadata = {
-  title: "Academy – Watchmann",
+  title: "Academy – Watchmann Technologies Ltd",
   description: "Structured courses to upskill teams in AI, data platforms, cloud, and software delivery.",
 }
 

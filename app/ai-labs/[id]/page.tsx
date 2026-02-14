@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     .eq("id", params.id)
     .single()
   if (!project) {
-    return { title: "AI Labs – Watchmann", description: "Showcase of AI projects and innovations." }
+    return { title: "AI Labs – Watchmann Technologies Ltd", description: "Showcase of AI projects and innovations." }
   }
   return {
     title: `${project.name} – AI Labs`,

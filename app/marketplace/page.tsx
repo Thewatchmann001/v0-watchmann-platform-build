@@ -7,8 +7,8 @@ import { createClient } from "@/lib/supabase/server"
 import Link from "next/link"
 import { ShoppingCart, Tag, ArrowRight } from "lucide-react"
 export const metadata = {
-  title: "Marketplace – Watchmann",
-  description: "Discover AI tools, templates, and services in the Watchmann marketplace.",
+  title: "Marketplace – Watchmann Technologies Ltd",
+  description: "Discover AI tools, templates, and services in the Watchmann Technologies Ltd marketplace.",
 }
 
 export default async function MarketplacePage() {

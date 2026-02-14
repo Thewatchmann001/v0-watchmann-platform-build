@@ -53,12 +53,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     .single()
   if (!post) {
     return {
-      title: "Blog – Watchmann",
+      title: "Blog – Watchmann Technologies Ltd",
       description: "Insights on AI, software, data, and cloud.",
     }
   }
   return {
-    title: `${post.title} – Watchmann`,
+    title: `${post.title} – Watchmann Technologies Ltd`,
     description: post.description || "Insights on AI, software, data, and cloud.",
     openGraph: {
       images: post.cover_image_url ? [post.cover_image_url] : undefined,

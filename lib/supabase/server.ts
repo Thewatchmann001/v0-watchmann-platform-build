@@ -8,7 +8,18 @@ export async function createClient() {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseAnonKey) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("Supabase credentials missing. Using mock server client.")
+    }
+
     const mockResponse = { data: null, error: null }
+    const errorResponse = {
+      data: null,
+      error: {
+        message: "Supabase is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment variables."
+      }
+    }
+
     const chain = {
       eq: () => chain,
       select: () => chain,
@@ -27,12 +38,12 @@ export async function createClient() {
       auth: {
         getUser: async () => ({ data: { user: null }, error: null }),
         getSession: async () => ({ data: { session: null }, error: null }),
-        signInWithOAuth: async () => mockResponse,
-        exchangeCodeForSession: async () => ({ data: { session: null, user: null }, error: null }),
+        signInWithOAuth: async () => errorResponse,
+        exchangeCodeForSession: async () => errorResponse,
         signOut: async () => ({ error: null }),
       },
       from: () => chain,
-    } as any
+    } as unknown as ReturnType<typeof createServerClient>
   }
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {

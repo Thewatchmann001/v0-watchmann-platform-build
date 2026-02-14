@@ -35,7 +35,7 @@ export default async function BlogPage() {
             </span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Stay informed with the latest trends, best practices, and updates from the Watchmann team
+            Stay informed with the latest trends, best practices, and updates from the Watchmann Technologies Ltd team
           </p>
         </div>
       </section>
