@@ -24,6 +24,16 @@ export function SiteFooter() {
             <h3 className="font-semibold text-white mb-4">Platform</h3>
             <ul className="space-y-2">
               <li>
+                <Link href="/features" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Pricing
+                </Link>
+              </li>
+              <li>
                 <Link href="/ai-labs" className="text-sm text-slate-400 hover:text-white transition-colors">
                   AI Labs
                 </Link>
@@ -36,11 +46,6 @@ export function SiteFooter() {
               <li>
                 <Link href="/academy" className="text-sm text-slate-400 hover:text-white transition-colors">
                   Academy
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-sm text-slate-400 hover:text-white transition-colors">
-                  Blog
                 </Link>
               </li>
             </ul>
