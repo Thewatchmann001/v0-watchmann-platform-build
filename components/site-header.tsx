@@ -54,6 +54,12 @@ export function SiteHeader() {
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
+            <Link href="/features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+              Features
+            </Link>
+            <Link href="/pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+              Pricing
+            </Link>
             <Link href="/ai-labs" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
               AI Labs
             </Link>
@@ -62,12 +68,6 @@ export function SiteHeader() {
             </Link>
             <Link href="/academy" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
               Academy
-            </Link>
-            <Link href="/blog" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-              Blog
-            </Link>
-            <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-              About
             </Link>
             {isAuthed && (
               <Link href="/dashboard" className="text-sm font-medium text-white transition-colors">
@@ -94,6 +94,12 @@ export function SiteHeader() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-800 bg-slate-900">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            <Link href="/features" className="text-sm font-medium text-slate-300 hover:text-white py-2">
+              Features
+            </Link>
+            <Link href="/pricing" className="text-sm font-medium text-slate-300 hover:text-white py-2">
+              Pricing
+            </Link>
             <Link href="/ai-labs" className="text-sm font-medium text-slate-300 hover:text-white py-2">
               AI Labs
             </Link>
@@ -102,12 +108,6 @@ export function SiteHeader() {
             </Link>
             <Link href="/academy" className="text-sm font-medium text-slate-300 hover:text-white py-2">
               Academy
-            </Link>
-            <Link href="/blog" className="text-sm font-medium text-slate-300 hover:text-white py-2">
-              Blog
-            </Link>
-            <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-white py-2">
-              About
             </Link>
             {isAuthed && (
               <Link href="/dashboard" className="text-sm font-medium text-white py-2">
