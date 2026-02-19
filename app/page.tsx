@@ -93,20 +93,51 @@ export default function HomePage() {
                     </div>
                     <div className="mx-auto text-xs text-slate-500 font-medium">watchmann.dev/dashboard</div>
                   </div>
-                  <div className="aspect-[16/10] bg-slate-950 flex items-center justify-center p-8">
+                  <div className="aspect-[16/10] bg-slate-950 flex p-0">
                     {/* Simulated Dashboard UI */}
-                    <div className="w-full h-full border border-slate-800 rounded-lg bg-slate-900/50 p-6 space-y-6">
+                    <div className="w-48 border-r border-slate-800 p-4 space-y-6 hidden md:block bg-slate-900/30">
+                      <div className="h-3 w-24 bg-slate-800 rounded" />
+                      <div className="space-y-3">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <div key={i} className="flex gap-2 items-center">
+                            <div className="h-3 w-3 bg-slate-800 rounded-sm" />
+                            <div className="h-2 w-20 bg-slate-800/50 rounded" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex-1 p-6 space-y-6 overflow-hidden">
                       <div className="flex justify-between items-center">
-                        <div className="h-4 w-32 bg-slate-800 rounded" />
-                        <div className="h-8 w-24 bg-blue-600/20 border border-blue-500/50 rounded" />
+                        <div className="space-y-2">
+                          <div className="h-4 w-32 bg-slate-800 rounded" />
+                          <div className="h-2 w-48 bg-slate-800/50 rounded" />
+                        </div>
+                        <div className="h-8 w-24 bg-blue-600/20 border border-blue-500/50 rounded flex items-center justify-center text-[10px] text-blue-400 font-bold uppercase tracking-wider">
+                          Active
+                        </div>
                       </div>
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="h-24 bg-slate-800/50 rounded-lg border border-slate-800" />
-                        <div className="h-24 bg-slate-800/50 rounded-lg border border-slate-800" />
-                        <div className="h-24 bg-slate-800/50 rounded-lg border border-slate-800" />
+                        {[
+                          { label: "Active Clients", value: "42", color: "text-blue-400" },
+                          { label: "Reports Generated", value: "1.2k", color: "text-emerald-400" },
+                          { label: "AI Labs Usage", value: "88%", color: "text-cyan-400" },
+                        ].map((stat, i) => (
+                          <div key={i} className="p-4 bg-slate-900/50 rounded-lg border border-slate-800 space-y-2">
+                            <div className="text-[10px] text-slate-500 font-bold uppercase">{stat.label}</div>
+                            <div className={`text-xl font-bold ${stat.color}`}>{stat.value}</div>
+                          </div>
+                        ))}
                       </div>
-                      <div className="h-48 bg-slate-800/30 rounded-lg border border-slate-800 flex items-center justify-center">
-                        <span className="text-slate-600 text-sm">Interactive Platform Preview</span>
+                      <div className="h-40 bg-slate-900/50 rounded-lg border border-slate-800 p-4 flex flex-col gap-4">
+                        <div className="flex justify-between items-end h-full gap-2">
+                          {[40, 70, 45, 90, 65, 80, 50, 95, 75, 60, 85].map((h, i) => (
+                            <div
+                              key={i}
+                              className="flex-1 bg-blue-500/20 border-t border-blue-500/50 rounded-t-sm"
+                              style={{ height: `${h}%` }}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -256,7 +287,7 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Trusted by the World's Best Agencies</h2>
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              {["GlobalAds", "Vortex Digital", "Skyline Media", "Nexus Creative", "Peak Performance"].map((logo) => (
+              {["LandBiznes", "Kobtec", "Configure SL", "GlobalAds", "Nexus"].map((logo) => (
                 <span key={logo} className="text-2xl font-bold text-slate-400 tracking-tighter">{logo}</span>
               ))}
             </div>
@@ -266,18 +297,18 @@ export default function HomePage() {
             {[
               {
                 quote: "Watchmann has fundamentally changed how we handle client reporting. We've reclaimed 15 hours a week per account manager.",
-                author: "Sarah Jenkins",
-                role: "Director of Ops, Skyline Media",
+                author: "Daniel Moseray",
+                role: "LandBiznes",
               },
               {
                 quote: "The AI Labs pillar is a game-changer. We can now offer custom AI solutions to our clients that were previously impossible.",
-                author: "Marcus Chen",
-                role: "Founder, Vortex Digital",
+                author: "Thomas Kobba",
+                role: "Kobtec Company",
               },
               {
                 quote: "Scaling from 20 to 60 clients was seamless. The automation tools are the most robust we've found in the market.",
-                author: "Elena Rodriguez",
-                role: "Head of Growth, Nexus Creative",
+                author: "Momodu Thoronka",
+                role: "Configure sl media",
               },
             ].map((t, idx) => (
               <div key={idx} className="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-4">
@@ -315,8 +346,33 @@ export default function HomePage() {
                     <Link href="/blog/globalads-case-study">Read the full story <ArrowRight className="ml-2" /></Link>
                   </Button>
                 </div>
-                <div className="flex-1 w-full aspect-video rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center">
-                  <span className="text-slate-500">GlobalAds Dashboard View</span>
+                <div className="flex-1 w-full aspect-video rounded-xl bg-slate-900 border border-slate-800 p-6 flex flex-col gap-4 overflow-hidden shadow-inner shadow-blue-500/5">
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-3">
+                      <div className="h-3 w-3 bg-blue-500 rounded-full animate-pulse" />
+                      <div className="h-3 w-32 bg-slate-800 rounded" />
+                    </div>
+                    <div className="h-6 w-20 bg-blue-500/20 rounded-full border border-blue-500/50 flex items-center justify-center">
+                      <div className="h-1.5 w-10 bg-blue-400 rounded-full" />
+                    </div>
+                  </div>
+                  <div className="flex-1 flex gap-1 items-end px-2 py-4">
+                    {[25, 45, 35, 75, 55, 85, 65, 80, 90, 100, 85, 95, 110, 105, 120].map((h, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 bg-gradient-to-t from-blue-600/40 to-cyan-400/40 rounded-t-sm"
+                        style={{ height: `${(h / 120) * 100}%` }}
+                      />
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-4 gap-3 mt-auto">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="h-12 bg-slate-950/50 rounded-lg border border-slate-800 flex flex-col justify-center px-3 gap-2">
+                        <div className="h-1.5 w-8 bg-slate-800 rounded" />
+                        <div className="h-2 w-12 bg-slate-700 rounded" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
              </div>
           </div>
