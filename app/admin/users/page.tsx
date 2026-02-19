@@ -9,7 +9,7 @@ export default async function AdminUsersPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser()
-  const isSuperAdmin = user?.email === "watchmann2025@gmail.com"
+  const isSuperAdmin = user?.email === "info@watchmann.dev"
 
   const { data: users } = await supabase
     .from("profiles")
@@ -22,7 +22,7 @@ export default async function AdminUsersPage() {
     const {
       data: { user },
     } = await supabase.auth.getUser()
-    if (user?.email !== "watchmann2025@gmail.com") return
+    if (user?.email !== "info@watchmann.dev") return
     const targetId = String(formData.get("user_id") || "")
     if (!targetId) return
     await supabase.from("profiles").update({ role: "admin" }).eq("id", targetId)
@@ -34,7 +34,7 @@ export default async function AdminUsersPage() {
     const {
       data: { user },
     } = await supabase.auth.getUser()
-    if (user?.email !== "watchmann2025@gmail.com") return
+    if (user?.email !== "info@watchmann.dev") return
     const targetId = String(formData.get("user_id") || "")
     if (!targetId) return
     await supabase.from("profiles").update({ role: "user" }).eq("id", targetId)

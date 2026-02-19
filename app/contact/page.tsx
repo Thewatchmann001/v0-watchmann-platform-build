@@ -105,7 +105,7 @@ export default function ContactPage() {
               <div className="flex gap-3 pt-4">
                 <Button variant="outline" asChild className="border-slate-700 text-white hover:bg-slate-800">
                   <TrackLink
-                    href="mailto:watchmann2025@gmail.com?subject=Project%20Inquiry&body=Hello%20Watchmann%2C%20I%27d%20like%20to%20discuss%20a%20project.%0A%0APlease%20reply%20via%20email%20or%20WhatsApp."
+                    href="mailto:info@watchmann.dev?subject=Project%20Inquiry&body=Hello%20Watchmann%2C%20I%27d%20like%20to%20discuss%20a%20project.%0A%0APlease%20reply%20via%20email%20or%20WhatsApp."
                     event="contact_email_click"
                     ariaLabel="Email Watchmann"
                   >

@@ -80,7 +80,7 @@ declare
   user_role text;
 begin
   -- Auto-assign admin role for specific email addresses
-  if new.email in ('josephemsamah@gmail.com', 'info.watchmann@gmail.com') then
+  if new.email in ('info@watchmann.dev') then
     user_role := 'admin';
   else
     user_role := 'user';

@@ -89,7 +89,7 @@ export default function AboutPage() {
                       <span>LinkedIn</span>
                     </Link>
                     <Link
-                      href="mailto:josephemsamah@gmail.com"
+                      href="mailto:info@watchmann.dev"
                       className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg transition-colors text-sm"
                     >
                       <Mail size={16} />
