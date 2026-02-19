@@ -56,7 +56,7 @@ export function AdminNav() {
         <Link href="/welcome" className="flex items-center space-x-2">
           <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
           <div>
-            <span className="text-xl font-bold text-white block">Watchmann</span>
+            <span className="text-xl font-bold text-white block">Watchmann Technologies</span>
             <span className="text-xs text-slate-400">Admin Console</span>
           </div>
         </Link>

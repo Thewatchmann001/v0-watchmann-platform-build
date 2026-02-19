@@ -50,7 +50,7 @@ export function SiteHeader() {
           </Button>
           <Link href={isAuthed ? "/welcome" : "/"} className="flex items-center space-x-2">
             <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
-            <span className="text-xl font-bold text-white">Watchmann</span>
+            <span className="text-xl font-bold text-white whitespace-nowrap">Watchmann Technologies</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">

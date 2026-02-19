@@ -1,10 +1,10 @@
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { cn } from "@/lib/utils"
 
 export default function PricingPage() {
   const tiers = [
@@ -93,41 +93,49 @@ export default function PricingPage() {
         <section className="container mx-auto px-4 pb-20">
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {tiers.map((tier) => (
-              <Card
+              <div
                 key={tier.name}
-                className={`flex flex-col border-slate-800 bg-slate-900/50 backdrop-blur transition-all duration-300 ${
-                  tier.highlighted ? "ring-2 ring-blue-500 scale-105 md:z-10" : "hover:border-slate-700"
-                }`}
+                className={cn(
+                  "flex flex-col h-full bg-slate-900 border border-slate-800 rounded-xl p-8 transition-all hover:border-slate-700",
+                  tier.highlighted && "ring-2 ring-blue-500"
+                )}
               >
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white">{tier.name}</CardTitle>
-                  <div className="mt-4 flex items-baseline">
-                    <span className="text-4xl font-bold tracking-tight text-white">{tier.price}</span>
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-bold text-white">{tier.price}</span>
                     {tier.price !== "Custom" && <span className="ml-1 text-xl font-semibold text-slate-400">/mo</span>}
                   </div>
-                  <CardDescription className="mt-2 text-slate-400">{tier.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="space-y-4">
+                  <p className="text-slate-400 mt-4 text-sm leading-relaxed">
+                    {tier.description}
+                  </p>
+                </div>
+
+                <div className="flex-1">
+                  <ul className="space-y-4 mb-8">
                     {tier.features.map((feature) => (
-                      <li key={feature} className="flex items-start">
-                        <Check className="h-5 w-5 text-blue-500 shrink-0 mr-3" />
-                        <span className="text-slate-300">{feature}</span>
+                      <li key={feature} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                        <span className="text-slate-300 text-sm leading-snug">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-                <CardFooter>
+                </div>
+
+                <div className="mt-auto">
                   <Button
                     asChild
-                    className={`w-full py-6 text-lg ${
+                    className={cn(
+                      "w-full py-6 text-lg",
                       tier.highlighted ? "bg-blue-600 hover:bg-blue-700" : "bg-slate-800 hover:bg-slate-700"
-                    }`}
+                    )}
                   >
-                    <Link href={tier.href}>{tier.cta}</Link>
+                    <Link href={tier.href}>
+                      {tier.cta}
+                    </Link>
                   </Button>
-                </CardFooter>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </section>

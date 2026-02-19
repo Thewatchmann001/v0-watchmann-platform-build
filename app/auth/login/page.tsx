@@ -49,7 +49,7 @@ function LoginForm() {
           <div className="flex justify-center mb-4">
             <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={64} height={64} className="w-16 h-auto object-contain" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-2">Watchmann</h1>
+          <h1 className="text-4xl font-bold text-white mb-2">Watchmann Technologies</h1>
           <p className="text-slate-400">Enterprise-grade platform</p>
         </div>
         <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">

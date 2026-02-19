@@ -42,7 +42,7 @@ export function DashboardNav() {
       <div className="p-6 border-b border-slate-800">
         <Link href="/welcome" className="flex items-center space-x-2">
           <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
-          <span className="text-xl font-bold text-white">Watchmann</span>
+          <span className="text-xl font-bold text-white">Watchmann Technologies</span>
         </Link>
         <div className="mt-4">
           <Button

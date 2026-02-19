@@ -13,8 +13,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-24 md:py-40 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-blue-500/10 to-transparent pointer-events-none" />
-        <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-4">
             <Zap size={16} />
             <span>Join 500+ agencies scaling with AI</span>
           </div>
@@ -28,7 +28,7 @@ export default function HomePage() {
           <p className="text-xl md:text-2xl text-slate-300 text-balance max-w-3xl mx-auto leading-relaxed">
             The complete OS for AI-driven agencies. Centralize client management, automate reporting, and access a premium marketplace of AI tools.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4 opacity-0 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500 fill-mode-forwards">
             <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
               <Link href="/auth/sign-up">
                 Get Started Free
@@ -48,9 +48,9 @@ export default function HomePage() {
       </section>
 
       {/* Product Showcase Section */}
-      <section className="container mx-auto px-4 py-24">
+      <section className="container mx-auto px-4 py-32">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">One Platform. Every Pillar of Growth.</h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Replace your fragmented toolstack with a unified operating system built specifically for agency scale.
@@ -118,7 +118,8 @@ export default function HomePage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="container mx-auto px-4 py-24 border-t border-slate-900">
+      <section className="container mx-auto px-4 py-32 border-t border-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">How It Works</h2>
@@ -165,7 +166,7 @@ export default function HomePage() {
       </section>
 
       {/* Narrative Features Section (Problem -> Solution -> Outcome) */}
-      <section id="features" className="container mx-auto px-4 py-24 bg-slate-900/20">
+      <section id="features" className="container mx-auto px-4 py-32 bg-slate-900/20">
         <div className="max-w-6xl mx-auto space-y-32">
           {/* Problem */}
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -249,8 +250,9 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof & Testimonials */}
-      <section className="container mx-auto px-4 py-24">
-        <div className="max-w-6xl mx-auto">
+      <section className="container mx-auto px-4 py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Trusted by the World's Best Agencies</h2>
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
@@ -292,7 +294,7 @@ export default function HomePage() {
           </div>
 
           {/* Case Study Snippet */}
-          <div className="mt-24 p-1 rounded-3xl bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20">
+          <div className="mt-32 p-1 rounded-3xl bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20">
              <div className="bg-slate-950 rounded-[22px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1 space-y-6">
                   <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
@@ -320,7 +322,7 @@ export default function HomePage() {
           </div>
 
           {/* Trust Signals */}
-          <div className="mt-24 pt-16 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-12">
+          <div className="mt-32 pt-16 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-12">
             <div className="text-center md:text-left">
               <h4 className="text-xl font-bold text-white mb-2">Enterprise-Grade Trust</h4>
               <p className="text-slate-400">Your data security is our top priority.</p>

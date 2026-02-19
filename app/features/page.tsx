@@ -62,7 +62,7 @@ export default function FeaturesPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-20 text-center">
+        <section className="container mx-auto px-4 py-20 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Built for the Modern Agency</h1>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
             Explore the four pillars of the Watchmann platform designed to automate your workflows and scale your impact.
@@ -74,8 +74,10 @@ export default function FeaturesPage() {
           {pillars.map((pillar, index) => (
             <div
               key={pillar.title}
-              className={`flex flex-col md:items-center gap-12 ${
-                index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+              className={`flex flex-col md:items-center gap-12 animate-in fade-in duration-1000 fill-mode-both ${
+                index % 2 === 1
+                  ? "md:flex-row-reverse slide-in-from-right-8"
+                  : "md:flex-row slide-in-from-left-8"
               }`}
             >
               <div className="flex-1 space-y-6">
