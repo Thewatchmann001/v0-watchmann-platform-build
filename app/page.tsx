@@ -1,76 +1,153 @@
+"use client"
+
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { HeroBackground } from "@/components/hero-background"
+import { LogoMarquee } from "@/components/logo-marquee"
+import { TransformationSection } from "@/components/transformation-section"
+import { AILabsSimulation, MarketplaceSimulation, AcademySimulation, ClientManagementSimulation } from "@/components/ui-simulations"
 import Link from "next/link"
-import { ArrowRight, Zap, Shield, Users, TrendingUp, Cpu, ShoppingCart, GraduationCap, FileText, Check } from "lucide-react"
+import { ArrowRight, Zap, Shield, Users, TrendingUp, Cpu, ShoppingCart, GraduationCap, Check, Play } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState("AI Labs")
+
+  const showcasePillars = [
+    { title: "AI Labs", desc: "Showcase custom AI solutions to clients", icon: Cpu, component: <AILabsSimulation /> },
+    { title: "Marketplace", desc: "Access high-performing AI templates", icon: ShoppingCart, component: <MarketplaceSimulation /> },
+    { title: "Academy", desc: "Train your team on the latest AI tech", icon: GraduationCap, component: <AcademySimulation /> },
+    { title: "Client Management", desc: "Automate reporting & deliverables", icon: Users, component: <ClientManagementSimulation /> },
+  ]
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+    <div className="min-h-screen bg-slate-950 selection:bg-blue-500/30">
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-24 md:py-40 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-blue-500/10 to-transparent pointer-events-none" />
-        <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-4">
-            <Zap size={16} />
-            <span>Join 500+ agencies scaling with AI</span>
-          </div>
-          <h1 className="text-5xl md:text-8xl font-bold text-white text-balance tracking-tight leading-[1.1]">
-            Automate Client Reporting & <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Scale Your Agency
-            </span>{" "}
-            Without Hiring
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-300 text-balance max-w-3xl mx-auto leading-relaxed">
-            The complete OS for AI-driven agencies. Centralize client management, automate reporting, and access a premium marketplace of AI tools.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4 opacity-0 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500 fill-mode-forwards">
-            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
-              <Link href="/auth/sign-up">
-                Get Started Free
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 bg-transparent"
+      <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden">
+        <HeroBackground />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center gap-4 mb-4"
             >
-              <Link href="#features">Explore Features</Link>
-            </Button>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
+                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Live System Status: Optimal</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/50 text-slate-300 text-xs font-medium">
+                <Zap size={14} className="text-blue-400" />
+                <span>Join 500+ agencies scaling with Watchmann AI</span>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl md:text-8xl font-bold text-white text-balance tracking-tight leading-[1.1]"
+            >
+              Automate Client Reporting & <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+                Scale Your Agency
+              </span>{" "}
+              Without Hiring
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl md:text-2xl text-slate-300 text-balance max-w-3xl mx-auto leading-relaxed"
+            >
+              The complete OS for AI-driven agencies. Centralize client management, automate reporting, and access a premium marketplace of AI tools.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
+            >
+              <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-7 h-auto group">
+                <Link href="/auth/sign-up">
+                  Get Started Free
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 py-7 h-auto bg-slate-900/50 backdrop-blur-sm group"
+              >
+                <Link href="#demo" className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-full bg-blue-500/10 flex items-center justify-center mr-2 group-hover:bg-blue-500/20 transition-colors">
+                    <Play size={16} className="text-blue-400 fill-blue-400" />
+                  </div>
+                  Play Demo
+                </Link>
+              </Button>
+            </motion.div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+        >
+          <div className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">Scroll to Explore</div>
+          <div className="w-px h-12 bg-gradient-to-b from-blue-500 to-transparent" />
+        </motion.div>
       </section>
 
       {/* Product Showcase Section */}
-      <section className="container mx-auto px-4 py-32">
+      <section id="demo" className="container mx-auto px-4 py-32 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">One Platform. Every Pillar of Growth.</h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">One Platform. Every Pillar of Growth.</h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
               Replace your fragmented toolstack with a unified operating system built specifically for agency scale.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-4 space-y-4">
-              {[
-                { title: "AI Labs", desc: "Showcase custom AI solutions to clients", icon: Cpu },
-                { title: "Marketplace", desc: "Access high-performing AI templates", icon: ShoppingCart },
-                { title: "Academy", desc: "Train your team on the latest AI tech", icon: GraduationCap },
-                { title: "Client Management", desc: "Automate reporting & deliverables", icon: Users },
-              ].map((item, idx) => (
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-4 space-y-4"
+            >
+              {showcasePillars.map((item) => (
                 <div
                   key={item.title}
-                  className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-blue-500/50 transition-all group cursor-default"
+                  onClick={() => setActiveTab(item.title)}
+                  className={`p-6 rounded-2xl border transition-all cursor-pointer backdrop-blur-sm ${
+                    activeTab === item.title
+                      ? "bg-blue-600/10 border-blue-500/50 ring-1 ring-blue-500/20 shadow-[0_0_20px_-12px_rgba(59,130,246,0.5)]"
+                      : "bg-slate-900/40 border-slate-800 hover:border-slate-700"
+                  }`}
                 >
                   <div className="flex items-center gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                    <div className={`h-10 w-10 rounded-lg flex items-center justify-center transition-colors ${
+                      activeTab === item.title ? "bg-blue-500 text-white" : "bg-blue-500/10 text-blue-400"
+                    }`}>
                       <item.icon size={20} />
                     </div>
                     <div>
@@ -80,80 +157,54 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="lg:col-span-8">
-              <div className="relative group">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-8 h-full min-h-[500px]"
+            >
+              <div className="relative h-full group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                <div className="relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/10">
+                <div className="relative h-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/10 backdrop-blur-sm flex flex-col">
                   <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-slate-900/50">
                     <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-slate-700" />
-                      <div className="w-3 h-3 rounded-full bg-slate-700" />
-                      <div className="w-3 h-3 rounded-full bg-slate-700" />
+                      <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                      <div className="w-3 h-3 rounded-full bg-amber-500/50" />
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
                     </div>
-                    <div className="mx-auto text-xs text-slate-500 font-medium">watchmann.dev/dashboard</div>
+                    <div className="mx-auto text-[10px] text-slate-500 font-mono tracking-widest uppercase">watchmann_os_v1.0.4.sys</div>
                   </div>
-                  <div className="aspect-[16/10] bg-slate-950 flex p-0">
-                    {/* Simulated Dashboard UI */}
-                    <div className="w-48 border-r border-slate-800 p-4 space-y-6 hidden md:block bg-slate-900/30">
-                      <div className="h-3 w-24 bg-slate-800 rounded" />
-                      <div className="space-y-3">
-                        {[1, 2, 3, 4, 5].map((i) => (
-                          <div key={i} className="flex gap-2 items-center">
-                            <div className="h-3 w-3 bg-slate-800 rounded-sm" />
-                            <div className="h-2 w-20 bg-slate-800/50 rounded" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex-1 p-6 space-y-6 overflow-hidden">
-                      <div className="flex justify-between items-center">
-                        <div className="space-y-2">
-                          <div className="h-4 w-32 bg-slate-800 rounded" />
-                          <div className="h-2 w-48 bg-slate-800/50 rounded" />
-                        </div>
-                        <div className="h-8 w-24 bg-blue-600/20 border border-blue-500/50 rounded flex items-center justify-center text-[10px] text-blue-400 font-bold uppercase tracking-wider">
-                          Active
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-3 gap-4">
-                        {[
-                          { label: "Active Clients", value: "42", color: "text-blue-400" },
-                          { label: "Reports Generated", value: "1.2k", color: "text-emerald-400" },
-                          { label: "AI Labs Usage", value: "88%", color: "text-cyan-400" },
-                        ].map((stat, i) => (
-                          <div key={i} className="p-4 bg-slate-900/50 rounded-lg border border-slate-800 space-y-2">
-                            <div className="text-[10px] text-slate-500 font-bold uppercase">{stat.label}</div>
-                            <div className={`text-xl font-bold ${stat.color}`}>{stat.value}</div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="h-40 bg-slate-900/50 rounded-lg border border-slate-800 p-4 flex flex-col gap-4">
-                        <div className="flex justify-between items-end h-full gap-2">
-                          {[40, 70, 45, 90, 65, 80, 50, 95, 75, 60, 85].map((h, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 bg-blue-500/20 border-t border-blue-500/50 rounded-t-sm"
-                              style={{ height: `${h}%` }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                  <div className="flex-1 overflow-hidden relative">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="h-full"
+                      >
+                        {showcasePillars.find(p => p.title === activeTab)?.component}
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      <TransformationSection />
 
       {/* How It Works Section */}
       <section className="container mx-auto px-4 py-32 border-t border-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">How It Works</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">How It Works</h2>
             <p className="text-xl text-slate-400">Scale your agency in three simple steps.</p>
           </div>
 
@@ -181,7 +232,14 @@ export default function HomePage() {
                 icon: TrendingUp,
               },
             ].map((item, idx) => (
-              <div key={item.step} className="text-center space-y-6 group">
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="text-center space-y-6 group"
+              >
                 <div className="relative mx-auto w-20 h-20">
                    <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 transition-colors" />
                    <div className="relative w-20 h-20 rounded-full border-2 border-slate-800 bg-slate-950 flex items-center justify-center text-blue-400 font-bold text-xl group-hover:border-blue-500 transition-colors">
@@ -190,7 +248,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-2xl font-bold text-white">{item.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{item.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -200,7 +258,13 @@ export default function HomePage() {
       <section id="features" className="container mx-auto px-4 py-32 bg-slate-900/20">
         <div className="max-w-6xl mx-auto space-y-32">
           {/* Problem */}
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-16 items-center"
+          >
             <div className="space-y-6">
               <div className="inline-block px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium">
                 The Problem
@@ -222,10 +286,16 @@ export default function HomePage() {
                  <div className="text-slate-500 font-mono text-sm">Fragmented Workflows</div>
                </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Solution */}
-          <div className="grid md:grid-cols-2 gap-16 items-center md:flex-row-reverse">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-16 items-center md:flex-row-reverse"
+          >
             <div className="md:order-2 space-y-6">
               <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
                 The Solution
@@ -247,10 +317,16 @@ export default function HomePage() {
                  <div className="text-blue-400 font-mono text-sm">Watchmann AI Engine</div>
                </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Outcome */}
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-16 items-center"
+          >
             <div className="space-y-6">
               <div className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium">
                 The Outcome
@@ -276,7 +352,7 @@ export default function HomePage() {
                  <div className="text-emerald-400 font-mono text-sm">Exponential Growth</div>
                </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -286,14 +362,16 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Trusted by the World's Best Agencies</h2>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              {["LandBiznes", "Kobtec", "Configure SL", "GlobalAds", "Nexus"].map((logo) => (
-                <span key={logo} className="text-2xl font-bold text-slate-400 tracking-tighter">{logo}</span>
-              ))}
-            </div>
+            <LogoMarquee />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             {[
               {
                 quote: "Watchmann has fundamentally changed how we handle client reporting. We've reclaimed 15 hours a week per account manager.",
@@ -322,10 +400,16 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Case Study Snippet */}
-          <div className="mt-32 p-1 rounded-3xl bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mt-32 p-1 rounded-3xl bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20"
+          >
              <div className="bg-slate-950 rounded-[22px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1 space-y-6">
                   <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
@@ -375,10 +459,16 @@ export default function HomePage() {
                   </div>
                 </div>
              </div>
-          </div>
+          </motion.div>
 
           {/* Trust Signals */}
-          <div className="mt-32 pt-16 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="mt-32 pt-16 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-12"
+          >
             <div className="text-center md:text-left">
               <h4 className="text-xl font-bold text-white mb-2">Enterprise-Grade Trust</h4>
               <p className="text-slate-400">Your data security is our top priority.</p>
@@ -401,13 +491,19 @@ export default function HomePage() {
                  <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">SSL Secure</span>
                </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Final CTA Section */}
       <section className="container mx-auto px-4 py-24">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-5xl mx-auto bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20"
+        >
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 p-12 space-y-6">
               <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">Ready to Scale Your Agency to the Next Level?</h2>
@@ -432,7 +528,7 @@ export default function HomePage() {
                </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <SiteFooter />

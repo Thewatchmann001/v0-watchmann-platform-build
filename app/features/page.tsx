@@ -1,8 +1,12 @@
+"use client"
+
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
 import { Cpu, ShoppingCart, GraduationCap, Users, ArrowRight, Shield, Zap, TrendingUp } from "lucide-react"
 import Link from "next/link"
+import { AILabsSimulation, MarketplaceSimulation, AcademySimulation, ClientManagementSimulation } from "@/components/ui-simulations"
+import { motion } from "framer-motion"
 
 export default function FeaturesPage() {
   const pillars = [
@@ -62,9 +66,9 @@ export default function FeaturesPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-20 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Built for the Modern Agency</h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+        <section className="container mx-auto px-4 py-24 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1]">Built for the Modern Agency</h1>
+          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Explore the four pillars of the Watchmann platform designed to automate your workflows and scale your impact.
           </p>
         </section>
@@ -72,12 +76,14 @@ export default function FeaturesPage() {
         {/* Pillars Deep Dive */}
         <section className="container mx-auto px-4 py-10 space-y-32">
           {pillars.map((pillar, index) => (
-            <div
+            <motion.div
               key={pillar.title}
-              className={`flex flex-col md:items-center gap-12 animate-in fade-in duration-1000 fill-mode-both ${
-                index % 2 === 1
-                  ? "md:flex-row-reverse slide-in-from-right-8"
-                  : "md:flex-row slide-in-from-left-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className={`flex flex-col md:items-center gap-12 ${
+                index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
               }`}
             >
               <div className="flex-1 space-y-6">
@@ -111,113 +117,15 @@ export default function FeaturesPage() {
               <div className="flex-1">
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                  <div className="relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden aspect-video bg-slate-950">
-                    {pillar.title === "AI Labs" && (
-                      <div className="p-6 h-full flex flex-col gap-4">
-                        <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-                          <div className="flex gap-2">
-                            <div className="h-2 w-8 bg-blue-500 rounded" />
-                            <div className="h-2 w-12 bg-slate-800 rounded" />
-                          </div>
-                          <div className="h-6 w-20 bg-blue-500/20 border border-blue-500/50 rounded flex items-center justify-center text-[10px] text-blue-400 font-bold uppercase tracking-wider">GPT-4-Turbo</div>
-                        </div>
-                        <div className="flex-1 flex gap-4">
-                          <div className="w-1/3 space-y-3">
-                            {[1, 2, 3, 4].map(i => (
-                              <div key={i} className="p-3 bg-slate-900/50 border border-slate-800 rounded-lg space-y-2">
-                                <div className="h-1.5 w-full bg-slate-800 rounded" />
-                                <div className="h-1.5 w-2/3 bg-slate-800/50 rounded" />
-                              </div>
-                            ))}
-                          </div>
-                          <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-4 font-mono text-[10px] text-slate-500 leading-relaxed">
-                            <span className="text-blue-400">PROMPT:</span> Analyze the following dataset and generate a summary report for the Q4 marketing campaign...<br /><br />
-                            <span className="text-emerald-400">OUTPUT:</span> Based on the provided data, the Q4 campaign saw a 24% increase in conversion rates...
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {pillar.title === "Marketplace" && (
-                      <div className="p-6 h-full flex flex-col gap-6">
-                        <div className="flex gap-4">
-                           <div className="flex-1 h-8 bg-slate-900 border border-slate-800 rounded-lg flex items-center px-3 gap-2">
-                             <div className="h-3 w-3 rounded-full border border-slate-700" />
-                             <div className="h-2 w-24 bg-slate-800 rounded" />
-                           </div>
-                           <div className="h-8 w-24 bg-blue-600 rounded-lg" />
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                          {[1, 2, 3, 4].map(i => (
-                            <div key={i} className="p-4 bg-slate-900/50 border border-slate-800 rounded-xl flex gap-3">
-                              <div className="h-10 w-10 bg-slate-800 rounded-lg shrink-0" />
-                              <div className="space-y-2 flex-1">
-                                <div className="h-2 w-16 bg-slate-200 rounded" />
-                                <div className="h-1.5 w-24 bg-slate-700 rounded" />
-                                <div className="flex justify-between items-center pt-2">
-                                  <div className="h-2 w-8 bg-blue-400 rounded" />
-                                  <div className="h-4 w-10 bg-slate-800 rounded" />
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {pillar.title === "Academy" && (
-                      <div className="p-6 h-full flex gap-6">
-                        <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center">
-                          <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-sm">
-                            <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800">
-                            <div className="h-full w-2/3 bg-blue-500" />
-                          </div>
-                        </div>
-                        <div className="w-1/3 space-y-3">
-                           <div className="h-2 w-16 bg-slate-500 rounded mb-4" />
-                           {[1, 2, 3, 4, 5, 6].map(i => (
-                             <div key={i} className="flex gap-2 items-center">
-                               <div className={`h-4 w-4 rounded border ${i < 4 ? "bg-blue-500 border-blue-500" : "border-slate-800"}`} />
-                               <div className="h-1.5 w-full bg-slate-800 rounded" />
-                             </div>
-                           ))}
-                        </div>
-                      </div>
-                    )}
-                    {pillar.title === "Client Management" && (
-                      <div className="p-6 h-full flex flex-col gap-6">
-                        <div className="grid grid-cols-3 gap-4">
-                          {[1, 2, 3].map(i => (
-                            <div key={i} className="h-16 bg-slate-900/50 border border-slate-800 rounded-lg p-3 space-y-2">
-                              <div className="h-1.5 w-12 bg-slate-500 rounded" />
-                              <div className="h-3 w-16 bg-slate-200 rounded" />
-                            </div>
-                          ))}
-                        </div>
-                        <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-4 space-y-4">
-                           <div className="flex justify-between items-center">
-                             <div className="h-2 w-24 bg-slate-200 rounded" />
-                             <div className="h-6 w-16 bg-emerald-500/20 border border-emerald-500/50 rounded flex items-center justify-center text-[10px] text-emerald-400 font-bold uppercase">Healthy</div>
-                           </div>
-                           <div className="space-y-3">
-                             {[1, 2, 3].map(i => (
-                               <div key={i} className="flex items-center gap-4 py-2 border-b border-slate-800 last:border-0">
-                                 <div className="h-8 w-8 rounded bg-slate-800" />
-                                 <div className="flex-1 space-y-2">
-                                   <div className="h-1.5 w-32 bg-slate-200 rounded" />
-                                   <div className="h-1 w-24 bg-slate-700 rounded" />
-                                 </div>
-                                 <div className="h-2 w-12 bg-slate-800 rounded" />
-                               </div>
-                             ))}
-                           </div>
-                        </div>
-                      </div>
-                    )}
+                  <div className="relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden aspect-video bg-slate-950 shadow-2xl">
+                    {pillar.title === "AI Labs" && <AILabsSimulation />}
+                    {pillar.title === "Marketplace" && <MarketplaceSimulation />}
+                    {pillar.title === "Academy" && <AcademySimulation />}
+                    {pillar.title === "Client Management" && <ClientManagementSimulation />}
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </section>
 

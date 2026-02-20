@@ -1,3 +1,5 @@
+"use client"
+
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
@@ -5,12 +7,16 @@ import { Check, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils"
+import { useState } from "react"
+import { motion } from "framer-motion"
 
 export default function PricingPage() {
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly")
+
   const tiers = [
     {
       name: "Starter",
-      price: "$49",
+      price: billingCycle === "monthly" ? "$49" : "$39",
       description: "Perfect for solo agency owners just getting started.",
       features: [
         "Up to 5 active clients",
@@ -25,7 +31,7 @@ export default function PricingPage() {
     },
     {
       name: "Pro",
-      price: "$199",
+      price: billingCycle === "monthly" ? "$199" : "$159",
       description: "Ideal for growing agencies looking to scale with AI.",
       features: [
         "Up to 25 active clients",
@@ -84,9 +90,26 @@ export default function PricingPage() {
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Simple, Transparent Pricing</h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
             Choose the plan that's right for your agency and start scaling with AI today.
           </p>
+
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <span className={cn("text-sm font-medium", billingCycle === "monthly" ? "text-white" : "text-slate-500")}>Monthly</span>
+            <button
+              onClick={() => setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")}
+              className="relative w-14 h-7 bg-slate-800 rounded-full p-1 transition-colors hover:bg-slate-700"
+            >
+              <motion.div
+                animate={{ x: billingCycle === "monthly" ? 0 : 28 }}
+                className="w-5 h-5 bg-blue-500 rounded-full shadow-lg"
+              />
+            </button>
+            <span className={cn("text-sm font-medium flex items-center gap-2", billingCycle === "yearly" ? "text-white" : "text-slate-500")}>
+              Yearly
+              <span className="px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] text-blue-400 font-bold">SAVE 20%</span>
+            </span>
+          </div>
         </section>
 
         {/* Pricing Tiers */}
@@ -106,6 +129,9 @@ export default function PricingPage() {
                     <span className="text-4xl font-bold text-white">{tier.price}</span>
                     {tier.price !== "Custom" && <span className="ml-1 text-xl font-semibold text-slate-400">/mo</span>}
                   </div>
+                  {billingCycle === "yearly" && tier.price !== "Custom" && (
+                    <div className="text-[10px] text-slate-500 mt-1">Billed annually</div>
+                  )}
                   <p className="text-slate-400 mt-4 text-sm leading-relaxed">
                     {tier.description}
                   </p>
