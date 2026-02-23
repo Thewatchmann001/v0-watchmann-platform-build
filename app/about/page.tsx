@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Linkedin, Mail } from "lucide-react"
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 
 export const metadata = {
   title: "About - Watchmann",
@@ -9,7 +11,8 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-950 flex flex-col">
+      <SiteHeader />
       {/* Hero Section */}
       <section className="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="container mx-auto px-4 py-20 text-center">
@@ -140,6 +143,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SiteFooter />
     </div>
   )
 }

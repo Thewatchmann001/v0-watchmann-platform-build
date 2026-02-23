@@ -42,14 +42,19 @@ export async function updateSession(request: NextRequest) {
     userEmail = user.email || null
     const { data: profile } = await supabase.from("profiles").select("role,email").eq("id", user.id).single()
     userRole = profile?.role || null
+
+    // Force elevation for superAdmin email
     if (userEmail === "info@watchmann.dev" && userRole !== "admin") {
-      const { data: existing } = await supabase.from("profiles").select("id").eq("id", user.id).single()
-      if (existing) {
-        await supabase.from("profiles").update({ role: "admin" }).eq("id", user.id)
-      } else {
-        await supabase.from("profiles").insert({ id: user.id, email: userEmail, role: "admin" })
+      const { error: updateError } = await supabase.from("profiles").upsert({
+        id: user.id,
+        email: userEmail,
+        role: "admin",
+        full_name: "Super Admin",
+      })
+
+      if (!updateError) {
+        userRole = "admin"
       }
-      userRole = "admin"
     }
   }
 

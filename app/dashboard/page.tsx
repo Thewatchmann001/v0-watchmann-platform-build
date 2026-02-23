@@ -1,5 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { createClient } from "@/lib/supabase/server"
+import { redirect } from "next/navigation"
+import Link from "next/link"
 import {
   Briefcase,
   BookOpen,
@@ -19,6 +21,10 @@ export default async function DashboardPage() {
   } = await supabase.auth.getUser()
 
   const { data: profile } = await supabase.from("profiles").select("*").eq("id", user!.id).single()
+
+  if (profile?.role === "admin") {
+    redirect("/admin")
+  }
 
   const { data: projects, count: projectsCount } = await supabase
     .from("projects")
@@ -100,10 +106,10 @@ export default async function DashboardPage() {
             <CardTitle className="text-3xl text-white">{projectsCount || 0}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center text-sm text-cyan-400">
+            <Link href="/dashboard/projects" className="flex items-center text-sm text-cyan-400 hover:underline">
               <TrendingUp className="h-4 w-4 mr-1" />
               View all
-            </div>
+            </Link>
           </CardContent>
         </Card>
 
@@ -113,10 +119,10 @@ export default async function DashboardPage() {
             <CardTitle className="text-3xl text-white">{enrollmentsCount || 0}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center text-sm text-cyan-400">
+            <Link href="/dashboard/courses" className="flex items-center text-sm text-cyan-400 hover:underline">
               <BookOpen className="h-4 w-4 mr-1" />
               Continue learning
-            </div>
+            </Link>
           </CardContent>
         </Card>
 
@@ -126,10 +132,10 @@ export default async function DashboardPage() {
             <CardTitle className="text-3xl text-white">{ordersCount || 0}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center text-sm text-cyan-400">
+            <Link href="/dashboard/purchases" className="flex items-center text-sm text-cyan-400 hover:underline">
               <ShoppingBag className="h-4 w-4 mr-1" />
               View orders
-            </div>
+            </Link>
           </CardContent>
         </Card>
 
