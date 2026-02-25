@@ -19,7 +19,9 @@ export default async function AdminLayout({
 
   const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single()
 
-  if (profile?.role !== "superadmin") {
+  if (user.email === "info@watchmann.dev") {
+    // Grant access based on email regardless of current DB role to prevent lockout
+  } else if (profile?.role !== "superadmin") {
     redirect("/dashboard")
   }
 
