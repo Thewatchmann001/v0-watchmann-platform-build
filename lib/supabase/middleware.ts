@@ -42,7 +42,7 @@ export async function updateSession(request: NextRequest) {
     userEmail = user.email || null
     const { data: profile } = await supabase.from("profiles").select("role,email").eq("id", user.id).single()
     userRole = profile?.role || null
-    if (userEmail === "watchmann2025@gmail.com" && userRole !== "admin") {
+    if (userEmail === "info@watchmann.dev" && userRole !== "admin") {
       const { data: existing } = await supabase.from("profiles").select("id").eq("id", user.id).single()
       if (existing) {
         await supabase.from("profiles").update({ role: "admin" }).eq("id", user.id)

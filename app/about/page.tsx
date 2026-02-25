@@ -103,35 +103,75 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Pillars Section */}
+      <section className="py-24 border-b border-slate-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center">Our Enterprise Pillars</h2>
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-blue-400">AI Labs</h3>
+              <p className="text-slate-400 leading-relaxed">
+                Our R&D arm dedicated to exploring next-generation AI agents and automation frameworks for agency
+                workflows. We focus on bridging the gap between academic research and practical, scalable business
+                applications.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-cyan-400">Marketplace</h3>
+              <p className="text-slate-400 leading-relaxed">
+                A curated ecosystem of premium AI templates, workflow components, and enterprise-grade service packages.
+                The marketplace empowers agencies to rapidly deploy high-quality solutions without reinventing the
+                wheel.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-blue-400">Academy</h3>
+              <p className="text-slate-400 leading-relaxed">
+                Interactive learning platform designed to master the intersection of technology and agency operations.
+                Through expert-led courses and certifications, we ensure your team stays ahead of the technological
+                curve.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-cyan-400">Client Management</h3>
+              <p className="text-slate-400 leading-relaxed">
+                Unified operational hub providing deep insights into project lifecycles, resource allocation, and client
+                success metrics. We provide the tools necessary to manage complex multi-tenant environments with ease.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values Section */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-12 text-center">Our Values</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-6 h-6 bg-blue-500 rounded"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center">Our Values</h2>
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 bg-blue-500 rounded-lg"></div>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Innovation</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">Innovation</h3>
                 <p className="text-slate-400">
                   Constantly pushing boundaries to deliver cutting-edge solutions that drive progress.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-6 h-6 bg-cyan-500 rounded"></div>
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-cyan-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 bg-cyan-500 rounded-lg"></div>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Excellence</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">Excellence</h3>
                 <p className="text-slate-400">
                   Committed to delivering the highest quality in everything we create and every service we provide.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-6 h-6 bg-blue-500 rounded"></div>
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 bg-blue-500 rounded-lg"></div>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Accessibility</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">Accessibility</h3>
                 <p className="text-slate-400">
                   Making enterprise-grade technology accessible to businesses of all sizes worldwide.
                 </p>

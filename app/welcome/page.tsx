@@ -30,8 +30,8 @@ export default function WelcomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
               <Link href="/contact">
-                Contact Our Team
-                <Phone className="ml-2" size={20} />
+                Schedule Agency Assessment
+                <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>
             <Button
@@ -40,11 +40,16 @@ export default function WelcomePage() {
               asChild
               className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 bg-transparent"
             >
-              <Link href="/services">Explore Services</Link>
+              <Link href="/services">Start Free Trial</Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 bg-transparent">
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 bg-transparent"
+            >
               <TrackLink
-                href="mailto:watchmann2025@gmail.com?subject=Project%20Inquiry&body=Hello%20Watchmann%2C%20I%27d%20like%20to%20discuss%20a%20project.%0A%0APlease%20reply%20via%20email%20or%20WhatsApp."
+                href="mailto:info@watchmann.dev?subject=Project%20Inquiry&body=Hello%20Watchmann%20Technologies%2C%20I%27d%20like%20to%20discuss%20a%20project.%0A%0APlease%20reply%20via%20email%20or%20WhatsApp."
                 event="welcome_email_click"
                 ariaLabel="Email Watchmann"
               >
@@ -197,7 +202,7 @@ export default function WelcomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700">
                 <Link href="/contact">
-                  Contact Us
+                  Schedule Agency Assessment
                   <ArrowRight className="ml-2" size={20} />
                 </Link>
               </Button>
@@ -207,7 +212,7 @@ export default function WelcomePage() {
                 asChild
                 className="border-slate-700 text-white hover:bg-slate-800 bg-transparent"
               >
-                <Link href="/services">Explore Services</Link>
+                <Link href="/services">Start Free Trial</Link>
               </Button>
               <Button
                 size="lg"
