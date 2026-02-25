@@ -22,7 +22,8 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase.from("profiles").select("*").eq("id", user!.id).single()
 
-  if (profile?.role === "superadmin") {
+  // Force redirect for superadmin email or role
+  if (user?.email === "info@watchmann.dev" || profile?.role === "superadmin") {
     redirect("/admin")
   }
 
@@ -142,7 +143,7 @@ export default async function DashboardPage() {
         <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">
           <CardHeader className="pb-3">
             <CardDescription className="text-slate-400">Account Type</CardDescription>
-            <CardTitle className="text-3xl text-white capitalize">{profile?.role || "Client"}</CardTitle>
+            <CardTitle className="text-3xl text-white capitalize">{user?.email === "info@watchmann.dev" ? "SuperAdmin" : (profile?.role || "Client")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center text-sm text-cyan-400">View details</div>

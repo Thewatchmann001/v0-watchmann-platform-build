@@ -76,10 +76,17 @@ export async function updateSession(request: NextRequest) {
   }
 
   // Admin-only guard
-  if (request.nextUrl.pathname.startsWith("/admin") && userRole !== "superadmin") {
+  if (request.nextUrl.pathname.startsWith("/admin") && userRole !== "superadmin" && userEmail !== "info@watchmann.dev") {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/error"
     url.searchParams.set("error", "Not authorized")
+    return NextResponse.redirect(url)
+  }
+
+  // Final force redirect for info@watchmann.dev hitting dashboard
+  if (userEmail === "info@watchmann.dev" && request.nextUrl.pathname === "/dashboard") {
+    const url = request.nextUrl.clone()
+    url.pathname = "/admin"
     return NextResponse.redirect(url)
   }
 
