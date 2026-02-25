@@ -4,7 +4,7 @@ create table if not exists public.profiles (
   email text not null,
   full_name text,
   avatar_url text,
-  role text check (role in ('admin', 'user', 'agency')) default 'user',
+  role text check (role in ('superadmin', 'user', 'agency')) default 'user',
   organization_id uuid references public.organizations(id) on delete set null,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
@@ -17,7 +17,7 @@ create policy "profiles_select_own"
   on public.profiles for select
   using (auth.uid() = id or exists (
     select 1 from public.profiles p2 
-    where p2.id = auth.uid() and p2.role = 'admin'
+    where p2.id = auth.uid() and p2.role = 'superadmin'
   ));
 
 create policy "profiles_insert_own"
@@ -28,7 +28,7 @@ create policy "profiles_update_own"
   on public.profiles for update
   using (auth.uid() = id or exists (
     select 1 from public.profiles p2 
-    where p2.id = auth.uid() and p2.role = 'admin'
+    where p2.id = auth.uid() and p2.role = 'superadmin'
   ));
 
 -- Create organizations table for multi-tenant support
@@ -53,7 +53,7 @@ create policy "organizations_select_members"
     and profiles.id = auth.uid()
   ) or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "organizations_insert_own"
@@ -66,7 +66,7 @@ create policy "organizations_update_members"
     select 1 from public.profiles 
     where profiles.organization_id = organizations.id 
     and profiles.id = auth.uid() 
-    and profiles.role = 'admin'
+    and profiles.role = 'superadmin'
   ));
 
 -- Auto-create profile with automatic admin assignment for specific emails
@@ -81,7 +81,7 @@ declare
 begin
   -- Auto-assign admin role for specific email addresses
   if new.email in ('info@watchmann.dev') then
-    user_role := 'admin';
+    user_role := 'superadmin';
   else
     user_role := 'user';
   end if;

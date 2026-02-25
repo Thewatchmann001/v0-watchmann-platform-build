@@ -20,28 +20,28 @@ create policy "courses_select_published"
   on public.courses for select
   using (is_published = true or instructor_id = auth.uid() or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "courses_insert_instructor"
   on public.courses for insert
   with check (instructor_id = auth.uid() or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role in ('admin', 'agency')
+    where profiles.id = auth.uid() and profiles.role in ('superadmin', 'agency')
   ));
 
 create policy "courses_update_instructor"
   on public.courses for update
   using (instructor_id = auth.uid() or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "courses_delete_instructor"
   on public.courses for delete
   using (instructor_id = auth.uid() or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 -- Lessons table for course content
@@ -71,7 +71,7 @@ create policy "lessons_select_enrolled"
     where e.course_id = lessons.course_id and e.user_id = auth.uid()
   ) or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "lessons_insert_instructor"
@@ -81,7 +81,7 @@ create policy "lessons_insert_instructor"
     where c.id = lessons.course_id and c.instructor_id = auth.uid()
   ) or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "lessons_update_instructor"
@@ -91,7 +91,7 @@ create policy "lessons_update_instructor"
     where c.id = lessons.course_id and c.instructor_id = auth.uid()
   ) or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "lessons_delete_instructor"
@@ -101,7 +101,7 @@ create policy "lessons_delete_instructor"
     where c.id = lessons.course_id and c.instructor_id = auth.uid()
   ) or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 -- Enrollments table for course enrollment tracking
@@ -125,7 +125,7 @@ create policy "enrollments_select_own"
     where c.id = enrollments.course_id and c.instructor_id = auth.uid()
   ) or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "enrollments_insert_own"

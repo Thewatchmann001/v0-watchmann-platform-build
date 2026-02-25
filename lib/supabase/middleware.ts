@@ -44,16 +44,16 @@ export async function updateSession(request: NextRequest) {
     userRole = profile?.role || null
 
     // Force elevation for superAdmin email
-    if (userEmail === "info@watchmann.dev" && userRole !== "admin") {
+    if (userEmail === "info@watchmann.dev" && userRole !== "superadmin") {
       const { error: updateError } = await supabase.from("profiles").upsert({
         id: user.id,
         email: userEmail,
-        role: "admin",
+        role: "superadmin",
         full_name: "Super Admin",
       })
 
       if (!updateError) {
-        userRole = "admin"
+        userRole = "superadmin"
       }
     }
   }
@@ -76,7 +76,7 @@ export async function updateSession(request: NextRequest) {
   }
 
   // Admin-only guard
-  if (request.nextUrl.pathname.startsWith("/admin") && userRole !== "admin") {
+  if (request.nextUrl.pathname.startsWith("/admin") && userRole !== "superadmin") {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/error"
     url.searchParams.set("error", "Not authorized")

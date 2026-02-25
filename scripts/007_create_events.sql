@@ -20,5 +20,5 @@ create policy "events_select_admin"
   on public.events for select
   using (exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));

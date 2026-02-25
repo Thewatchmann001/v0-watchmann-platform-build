@@ -21,5 +21,5 @@ create policy "contact_requests_select_admin"
   on public.contact_requests for select
   using (exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));

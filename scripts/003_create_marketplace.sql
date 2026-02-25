@@ -20,28 +20,28 @@ create policy "products_select_all"
   on public.products for select
   using (is_active = true or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "products_insert_admin"
   on public.products for insert
   with check (exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "products_update_admin"
   on public.products for update
   using (exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "products_delete_admin"
   on public.products for delete
   using (exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 -- Orders table for marketplace purchases
@@ -62,7 +62,7 @@ create policy "orders_select_own"
   on public.orders for select
   using (user_id = auth.uid() or exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));
 
 create policy "orders_insert_own"
@@ -73,5 +73,5 @@ create policy "orders_update_admin"
   on public.orders for update
   using (exists (
     select 1 from public.profiles 
-    where profiles.id = auth.uid() and profiles.role = 'admin'
+    where profiles.id = auth.uid() and profiles.role = 'superadmin'
   ));

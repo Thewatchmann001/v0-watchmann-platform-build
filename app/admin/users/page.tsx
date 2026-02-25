@@ -25,7 +25,7 @@ export default async function AdminUsersPage() {
     if (user?.email !== "info@watchmann.dev") return
     const targetId = String(formData.get("user_id") || "")
     if (!targetId) return
-    await supabase.from("profiles").update({ role: "admin" }).eq("id", targetId)
+    await supabase.from("profiles").update({ role: "superadmin" }).eq("id", targetId)
   }
 
   async function removeAdmin(formData: FormData) {
@@ -42,7 +42,7 @@ export default async function AdminUsersPage() {
 
   const getRoleBadge = (role: string) => {
     const colors: Record<string, string> = {
-      admin: "bg-red-500/10 text-red-400 border-red-500/20",
+      superadmin: "bg-red-500/10 text-red-400 border-red-500/20",
       user: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
     }
     return colors[role] || colors.user
@@ -100,7 +100,7 @@ export default async function AdminUsersPage() {
                 </div>
                 {isSuperAdmin && (
                   <div className="pt-2">
-                    {user.role !== "admin" ? (
+                    {user.role !== "superadmin" ? (
                       <form action={makeAdmin}>
                         <input type="hidden" name="user_id" value={user.id} />
                         <button className="text-xs text-blue-400 hover:text-blue-300 underline">Make Admin</button>

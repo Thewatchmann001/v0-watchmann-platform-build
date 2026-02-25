@@ -30,7 +30,7 @@ create policy "projects_insert_agency"
     select 1 from public.profiles 
     where profiles.organization_id = projects.organization_id 
     and profiles.id = auth.uid() 
-    and profiles.role in ('admin', 'agency')
+    and profiles.role in ('superadmin', 'agency')
   ));
 
 create policy "projects_update_agency"
@@ -39,7 +39,7 @@ create policy "projects_update_agency"
     select 1 from public.profiles 
     where profiles.organization_id = projects.organization_id 
     and profiles.id = auth.uid() 
-    and profiles.role in ('admin', 'agency')
+    and profiles.role in ('superadmin', 'agency')
   ));
 
 create policy "projects_delete_agency"
@@ -48,7 +48,7 @@ create policy "projects_delete_agency"
     select 1 from public.profiles 
     where profiles.organization_id = projects.organization_id 
     and profiles.id = auth.uid() 
-    and profiles.role in ('admin', 'agency')
+    and profiles.role in ('superadmin', 'agency')
   ));
 
 -- Tasks table for project tasks
@@ -86,7 +86,7 @@ create policy "tasks_insert_members"
     join public.profiles pr on pr.organization_id = p.organization_id
     where p.id = tasks.project_id 
     and pr.id = auth.uid() 
-    and pr.role in ('admin', 'agency')
+    and pr.role in ('superadmin', 'agency')
   ));
 
 create policy "tasks_update_members"
@@ -104,5 +104,5 @@ create policy "tasks_delete_agency"
     join public.profiles pr on pr.organization_id = p.organization_id
     where p.id = tasks.project_id 
     and pr.id = auth.uid() 
-    and pr.role in ('admin', 'agency')
+    and pr.role in ('superadmin', 'agency')
   ));
