@@ -49,8 +49,14 @@ export function SiteHeader() {
             Back
           </Button>
           <Link href={isAuthed ? "/welcome" : "/"} className="flex items-center space-x-2">
-            <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
-            <span className="text-xl font-bold text-white">Watchmann</span>
+            <Image
+              src="/watchmann-logo.png"
+              alt="Watchmann Logo"
+              width={32}
+              height={32}
+              className="w-8 h-auto object-contain"
+            />
+            <span className="text-xl font-bold text-white whitespace-nowrap">Watchmann Technologies</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
@@ -82,7 +88,7 @@ export function SiteHeader() {
             <Link href="/auth/login">Login</Link>
           </Button>
           <Button asChild className="bg-blue-600 hover:bg-blue-700">
-            <Link href="/auth/sign-up">Get Started</Link>
+            <Link href="/auth/sign-up">Start Free Trial</Link>
           </Button>
         </div>
 
@@ -123,7 +129,7 @@ export function SiteHeader() {
                 <Link href="/auth/login">Login</Link>
               </Button>
               <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                <Link href="/auth/sign-up">Get Started</Link>
+                <Link href="/auth/sign-up">Start Free Trial</Link>
               </Button>
             </div>
           </div>
