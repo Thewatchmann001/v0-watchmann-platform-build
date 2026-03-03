@@ -50,10 +50,10 @@ export function SiteHeader() {
           </Button>
           <Link href={isAuthed ? "/welcome" : "/"} className="flex items-center space-x-2">
             <Image src="/watchmann-logo.png" alt="Watchmann Logo" width={32} height={32} className="w-8 h-auto object-contain" />
-            <span className="text-xl font-bold text-white">Watchmann</span>
+            <span className="text-xl font-bold text-white whitespace-nowrap">Watchmann Technologies</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             <Link href="/ai-labs" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
               AI Labs
             </Link>
@@ -78,6 +78,10 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
+          <div className="mr-4 flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 status-dot pulsing"></span>
+            All Systems Operational
+          </div>
           <Button variant="ghost" asChild className="text-slate-300 hover:text-white hover:bg-slate-800">
             <Link href="/auth/login">Login</Link>
           </Button>
