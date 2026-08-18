@@ -18,11 +18,8 @@ export default function WelcomePage() {
 
       <section className="container mx-auto px-4 py-20 md:py-32">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h1 className="text-5xl md:text-7xl font-bold text-white text-balance">
-            Welcome Back —{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Let’s Build Together
-            </span>
+          <h1 className="text-5xl md:text-7xl font-semibold text-white text-balance tracking-tight">
+            Welcome Back — <span className="text-blue-400">Let’s Build Together</span>
           </h1>
           <p className="text-xl text-slate-300 text-balance max-w-2xl mx-auto">
             Explore our ecosystem or reach out directly to start your next project with our full-spectrum technology services.
@@ -76,31 +73,10 @@ export default function WelcomePage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">50+</div>
-            <div className="text-slate-400">Active Agencies</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">1,000+</div>
-            <div className="text-slate-400">Projects Managed</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">25+</div>
-            <div className="text-slate-400">AI Models</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">99.9%</div>
-            <div className="text-slate-400">Uptime</div>
-          </div>
-        </div>
-      </section>
-
       <section id="features" className="container mx-auto px-4 py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Everything You Need, All in One Place</h2>
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">Everything You Need, All in One Place</h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Comprehensive platform built for modern agencies and enterprises
             </p>
@@ -128,8 +104,8 @@ export default function WelcomePage() {
 
             <Card className="border-slate-800 bg-slate-900/50 backdrop-blur hover:border-blue-500/50 transition-colors">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4">
-                  <ShoppingCart className="h-6 w-6 text-cyan-400" />
+                <div className="h-12 w-12 rounded-lg bg-slate-800 flex items-center justify-center mb-4">
+                  <ShoppingCart className="h-6 w-6 text-slate-300" />
                 </div>
                 <CardTitle className="text-white">Marketplace</CardTitle>
                 <CardDescription className="text-slate-400">
@@ -164,8 +140,8 @@ export default function WelcomePage() {
 
             <Card className="border-slate-800 bg-slate-900/50 backdrop-blur hover:border-blue-500/50 transition-colors">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4">
-                  <FileText className="h-6 w-6 text-cyan-400" />
+                <div className="h-12 w-12 rounded-lg bg-slate-800 flex items-center justify-center mb-4">
+                  <FileText className="h-6 w-6 text-slate-300" />
                 </div>
                 <CardTitle className="text-white">Blog & Insights</CardTitle>
                 <CardDescription className="text-slate-400">
@@ -185,12 +161,12 @@ export default function WelcomePage() {
       </section>
 
       <section className="container mx-auto px-4 py-20">
-        <Card className="max-w-4xl mx-auto border-slate-800 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 backdrop-blur">
+        <Card className="max-w-4xl mx-auto border-slate-800 bg-blue-900/20 backdrop-blur">
           <CardContent className="p-12 text-center space-y-6">
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-500/10">
               <TrendingUp className="h-8 w-8 text-blue-400" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Start Your Project?</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white">Ready to Start Your Project?</h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               Tell us about your goals. Our team will propose a tailored solution and timeline.
             </p>

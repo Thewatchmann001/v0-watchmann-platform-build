@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { Mail } from "lucide-react"
 
 export function SiteFooter() {
   return (
@@ -12,7 +13,8 @@ export function SiteFooter() {
               <span className="text-xl font-bold text-white whitespace-nowrap">Watchmann Technologies</span>
             </div>
             <p className="text-sm text-slate-400">
-              Enterprise-grade AI platform for agencies and businesses. Built in Sierra Leone. Scaling across West Africa.
+              An AI and software company building products for agencies and businesses. Based in Freetown, Sierra
+              Leone.
             </p>
             <p className="text-xs text-slate-500 pt-2">
               Founded by{" "}
@@ -20,10 +22,48 @@ export function SiteFooter() {
                 Joseph Edward Musa Amah
               </Link>
             </p>
+            <Link
+              href="mailto:watchmann2025@gmail.com"
+              className="flex items-center gap-2 text-xs text-slate-500 hover:text-blue-400 transition-colors pt-1"
+            >
+              <Mail size={14} />
+              watchmann2025@gmail.com
+            </Link>
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Platform</h3>
+            <h3 className="font-semibold text-white mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/products" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Full Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link href="/platform" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Watchmann Platform
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Jems AI
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://landbiznes.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 hover:text-white transition-colors"
+                >
+                  LandBiznes
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-4">Site</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/ai-labs" className="text-sm text-slate-400 hover:text-white transition-colors">
@@ -43,27 +83,6 @@ export function SiteFooter() {
               <li>
                 <Link href="/blog" className="text-sm text-slate-400 hover:text-white transition-colors">
                   Blog
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/docs" className="text-sm text-slate-400 hover:text-white transition-colors">
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link href="/support" className="text-sm text-slate-400 hover:text-white transition-colors">
-                  Support
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="text-sm text-slate-400 hover:text-white transition-colors">
-                  Pricing
                 </Link>
               </li>
             </ul>
@@ -93,7 +112,7 @@ export function SiteFooter() {
 
         <div className="mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-400">
           <p>&copy; {new Date().getFullYear()} Watchmann Technologies. All rights reserved.</p>
-          <p className="mt-2 text-[10px] uppercase tracking-widest text-slate-600">Built in Sierra Leone 🇸🇱</p>
+          <p className="mt-2 text-[10px] uppercase tracking-widest text-slate-600">Freetown, Sierra Leone 🇸🇱</p>
         </div>
       </div>
     </footer>

@@ -100,7 +100,8 @@ export default function ContactPage() {
             <CardHeader>
               <CardTitle className="text-white">Contact Us</CardTitle>
               <CardDescription className="text-slate-400">
-                Share a few details and we&apos;ll get back to you promptly
+                Watchmann Technologies is based in Freetown, Sierra Leone. Share a few details and we&apos;ll get
+                back to you promptly.
               </CardDescription>
               <div className="flex gap-3 pt-4">
                 <Button variant="outline" asChild className="border-slate-700 text-white hover:bg-slate-800">

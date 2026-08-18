@@ -26,7 +26,7 @@ export default async function AILabDetailPage({ params }: { params: { id: string
                   {project.category.replace("_", " ")}
                 </Badge>
                 {project.is_featured && (
-                  <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20">Featured</Badge>
+                  <Badge className="bg-slate-800 text-slate-300 border-slate-700">Featured</Badge>
                 )}
               </div>
               <CardTitle className="text-white">{project.name}</CardTitle>

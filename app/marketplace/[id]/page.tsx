@@ -26,7 +26,7 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
                 <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
                   {product.category.replace("_", " ")}
                 </Badge>
-                <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 flex items-center gap-1">
+                <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 flex items-center gap-1">
                   <Tag className="h-3 w-3" />
                   ${Number(product.price).toFixed(2)}
                 </Badge>

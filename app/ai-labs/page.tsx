@@ -26,15 +26,12 @@ export default async function AILabsPage() {
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-block">
-            <span className="text-sm font-semibold text-cyan-400 bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">
+            <span className="text-sm font-semibold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
               AI Labs
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white text-balance">
-            Cutting-Edge{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              AI Innovation
-            </span>
+          <h1 className="text-5xl md:text-6xl font-semibold text-white text-balance tracking-tight">
+            Cutting-Edge <span className="text-blue-400">AI Innovation</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Explore our latest AI projects, research, and experimental technologies pushing the boundaries of what's
@@ -81,7 +78,7 @@ export default async function AILabsPage() {
                       </div>
                     )}
                     {!project.thumbnail_url && (
-                      <div className="w-full h-48 rounded-lg bg-gradient-to-br from-blue-900/30 to-cyan-900/30 mb-4 flex items-center justify-center">
+                      <div className="w-full h-48 rounded-lg bg-slate-800/60 mb-4 flex items-center justify-center">
                         <span className="text-6xl">🤖</span>
                       </div>
                     )}
@@ -90,7 +87,7 @@ export default async function AILabsPage() {
                         {project.category.replace("_", " ")}
                       </Badge>
                       {project.is_featured && (
-                        <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20">Featured</Badge>
+                        <Badge className="bg-slate-800 text-slate-300 border-slate-700">Featured</Badge>
                       )}
                     </div>
                     <CardTitle className="text-white">{project.name}</CardTitle>
@@ -152,7 +149,7 @@ export default async function AILabsPage() {
             <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">
               <CardContent className="p-12 text-center space-y-4">
                 <div className="text-6xl mb-4">🚀</div>
-                <h3 className="text-2xl font-bold text-white">Coming Soon</h3>
+                <h3 className="text-2xl font-semibold text-white">Coming Soon</h3>
                 <p className="text-slate-400 max-w-md mx-auto">
                   Our AI Labs projects are currently being prepared. Check back soon to explore cutting-edge AI
                   innovations!

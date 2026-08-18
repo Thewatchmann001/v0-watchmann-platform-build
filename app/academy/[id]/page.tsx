@@ -31,7 +31,7 @@ export default async function CourseDetailPage({ params }: { params: { id: strin
               <div className="flex items-center gap-3 mb-2">
                 <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 capitalize">{course.level}</Badge>
                 {course.duration_hours && (
-                  <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 flex items-center gap-1">
+                  <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 flex items-center gap-1">
                     <Clock className="h-3 w-3" />
                     {course.duration_hours}h
                   </Badge>

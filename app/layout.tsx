@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Watchmann - Enterprise-Grade Platform",
-  description: "Comprehensive ecosystem for agencies: AI Labs, Marketplace, Academy, and Client Management",
+  title: "Watchmann Technologies",
+  description: "Watchmann Technologies is an AI and software company based in Freetown, Sierra Leone, building a portfolio of products including Watchmann Platform, Jems AI, and LandBiznes.",
   generator: "v0.app",
   icons: {
     icon: "/favicon.png",
