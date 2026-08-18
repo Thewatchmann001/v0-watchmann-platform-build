@@ -33,11 +33,8 @@ export default async function AcademyPage() {
               Academy
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white text-balance">
-            Learn{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              AI & Modern Engineering
-            </span>
+          <h1 className="text-5xl md:text-6xl font-semibold text-white text-balance tracking-tight">
+            Learn <span className="text-blue-400">AI & Modern Engineering</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Structured courses to upskill teams in AI, data platforms, cloud, and modern software delivery
@@ -81,7 +78,7 @@ export default async function AcademyPage() {
                       </div>
                     )}
                     {!course.thumbnail_url && (
-                      <div className="w-full h-48 rounded-lg bg-gradient-to-br from-blue-900/30 to-cyan-900/30 mb-4 flex items-center justify-center">
+                      <div className="w-full h-48 rounded-lg bg-slate-800/60 mb-4 flex items-center justify-center">
                         <GraduationCap className="h-8 w-8 text-blue-400" />
                       </div>
                     )}
@@ -90,7 +87,7 @@ export default async function AcademyPage() {
                         {course.level}
                       </Badge>
                       {course.duration_hours && (
-                        <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 flex items-center gap-1">
+                        <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 flex items-center gap-1">
                           <Clock className="h-3 w-3" />
                           {course.duration_hours}h
                         </Badge>
@@ -115,7 +112,7 @@ export default async function AcademyPage() {
             <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">
               <CardContent className="p-12 text-center space-y-4">
                 <div className="text-6xl mb-4">🎓</div>
-                <h3 className="text-2xl font-bold text-white">Courses Coming Soon</h3>
+                <h3 className="text-2xl font-semibold text-white">Courses Coming Soon</h3>
                 <p className="text-slate-400 max-w-md mx-auto">
                   We&apos;re preparing curricula. Check back soon to enroll in AI and engineering programs.
                 </p>

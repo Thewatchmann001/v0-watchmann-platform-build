@@ -29,15 +29,12 @@ export default function ServicesPage() {
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-block">
-            <span className="text-sm font-semibold text-cyan-400 bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20 transition-all duration-300 ease-out hover:bg-cyan-500/20">
+            <span className="text-sm font-semibold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
               Services
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white text-balance">
-            Full-Spectrum{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Technology Solutions
-            </span>
+          <h1 className="text-5xl md:text-6xl font-semibold text-white text-balance tracking-tight">
+            Full-Spectrum <span className="text-blue-400">Technology Solutions</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Strategy, design, build, deploy, and operate across software, AI, data, and cloud
@@ -59,7 +56,7 @@ export default function ServicesPage() {
                     <div className="h-12 w-12 rounded-lg bg-blue-500/10 flex items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-105">
                       <Icon className="h-6 w-6 text-blue-400" />
                     </div>
-                    <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20">
+                    <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
                       {idx < 6 ? "Core" : "Advanced"}
                     </Badge>
                   </div>

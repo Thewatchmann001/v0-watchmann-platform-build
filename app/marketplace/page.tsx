@@ -29,15 +29,12 @@ export default async function MarketplacePage() {
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-block">
-            <span className="text-sm font-semibold text-cyan-400 bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">
+            <span className="text-sm font-semibold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
               Marketplace
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white text-balance">
-            Discover{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Tools, Templates & Services
-            </span>
+          <h1 className="text-5xl md:text-6xl font-semibold text-white text-balance tracking-tight">
+            Discover <span className="text-blue-400">Tools, Templates & Services</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Browse ready-to-use AI tools, implementation services, and learning products to accelerate delivery
@@ -81,7 +78,7 @@ export default async function MarketplacePage() {
                       </div>
                     )}
                     {!product.image_url && (
-                      <div className="w-full h-48 rounded-lg bg-gradient-to-br from-blue-900/30 to-cyan-900/30 mb-4 flex items-center justify-center">
+                      <div className="w-full h-48 rounded-lg bg-slate-800/60 mb-4 flex items-center justify-center">
                         <ShoppingCart className="h-8 w-8 text-blue-400" />
                       </div>
                     )}
@@ -89,7 +86,7 @@ export default async function MarketplacePage() {
                       <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
                         {product.category.replace("_", " ")}
                       </Badge>
-                      <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 flex items-center gap-1">
+                      <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 flex items-center gap-1">
                         <Tag className="h-3 w-3" />
                         ${Number(product.price).toFixed(2)}
                       </Badge>
@@ -122,7 +119,7 @@ export default async function MarketplacePage() {
             <Card className="border-slate-800 bg-slate-900/50 backdrop-blur">
               <CardContent className="p-12 text-center space-y-4">
                 <div className="text-6xl mb-4">🛍️</div>
-                <h3 className="text-2xl font-bold text-white">No Products Yet</h3>
+                <h3 className="text-2xl font-semibold text-white">No Products Yet</h3>
                 <p className="text-slate-400 max-w-md mx-auto">
                   We&apos;re preparing offerings. Check back soon to discover tools, templates, and services.
                 </p>
